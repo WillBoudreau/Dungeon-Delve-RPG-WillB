@@ -14,7 +14,7 @@ namespace FirstPlayable
         }
         public override void Started(HUD hud)
         {
-            hud.DrawQuestLog();
+
         }
     }
 }
