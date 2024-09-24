@@ -10,14 +10,29 @@ namespace FirstPlayable
     {
         private Player player;
         private HUD hud;
+        private List<Quest> activeQuests;
+        private List<Quest> completedQuests;
+
         public QuestManager(Player player,HUD hud)
         {
             this.player = player;
             this.hud = hud;
+            activeQuests = new List<Quest>();
+            completedQuests = new List<Quest>();
         }
-        public virtual void Draw()
+        public void AddQuest(Quest quest)
         {
-
+            activeQuests.Add(quest);
+            quest.Started(hud);
+        }
+        public void CompleteQuest(Quest quest)
+        {
+            if(activeQuests.Contains(quest))
+            {
+                activeQuests.Remove(quest);
+                activeQuests.Add(quest);
+                quest.Complete(hud);    
+            }
         }
     }
 }

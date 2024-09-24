@@ -8,8 +8,15 @@ namespace FirstPlayable
 {
     internal abstract class Quest
     {
-        public bool IsCurrent;
+        public bool IsCurrent { get; set; }
+        public int EnemiesToKill;
+        public int EnemiesKilled;
         public abstract void Complete(HUD hud);
         public abstract void Started(HUD hud);
+        public void StartQuest(HUD hud)
+        {
+            IsCurrent = true;
+            Started(hud);
+        }
     }
 }

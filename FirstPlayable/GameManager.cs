@@ -20,6 +20,8 @@ namespace FirstPlayable
         private Stopwatch levelTimer = new Stopwatch();
         private Map map;
         private Player player;
+        private Quest quest;
+        private QuestManager questManager;
 
         Boss boss;
         Goblin goblin;
@@ -43,7 +45,7 @@ namespace FirstPlayable
             }
             map = new Map(GetPath(currentLevel), enemies);
             player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, this);
-            hud = new HUD(player, map);
+            hud = new HUD(player, map,quest);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
             soundPlayer.PlayLooping();
             

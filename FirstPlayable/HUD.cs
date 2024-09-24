@@ -10,11 +10,13 @@ namespace FirstPlayable
     {
         private Player player;
         private Map map;
+        private Quest quest;
 
-        public HUD(Player player, Map map)
+        public HUD(Player player, Map map,Quest quest)
         {
             this.player = player;
             this.map = map;
+            this.quest = quest;
         }
 
         public void UpdateHUD()
@@ -23,6 +25,7 @@ namespace FirstPlayable
             Console.SetCursorPosition(0, map.mapHeight + 1);
             Console.WriteLine($"Player Health: {player.healthSystem.GetCurrentHealth()}/{player.healthSystem.GetMaximumHealth()} | Collected Seeds: {player.currentSeeds} | Attacking: {currentEnemyInfo}");
             RedrawLiveLog();
+            DrawQuestLog();
         }
 
         public void UpdateLegend()
@@ -74,11 +77,18 @@ namespace FirstPlayable
                 }
             }
         }
-        public void DrawQuestLog(List<string>QuestLog)
+        public void DrawQuestLog()
         {
             Console.SetCursorPosition(0, map.mapHeight + 9);
             Console.WriteLine("Quests: ");
-
+            if(quest is QuestKillEnemies killquest)
+            {
+                Console.WriteLine($"Kill Enemies Quest: {killquest.EnemiesKilled / killquest.EnemiesToKill} enemies killed");
+            }
+            else
+            {
+                Console.WriteLine(" ");
+            }
         }
     }
 }

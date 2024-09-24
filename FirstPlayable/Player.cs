@@ -10,6 +10,7 @@ namespace FirstPlayable
 {
     internal class Player 
     {
+
         // variables | encapsulation
         
 
@@ -48,6 +49,7 @@ namespace FirstPlayable
         public Map map;
 
         public List<EnemyManager> enemies;
+        public Quest quest;
 
         public Player(int maxHealth, int health, int damage, int startX, int startY, char[,] mapLayout, GameManager gameManager)
         {
@@ -140,6 +142,7 @@ namespace FirstPlayable
                         
                         if (enemy.healthSystem.IsDead())
                         {
+                            quest.EnemiesKilled++;
                            enemy.enemyAlive = false;
                             Console.SetCursorPosition(enemy.positionX, enemy.positionY);
                             Console.BackgroundColor = ConsoleColor.DarkGray;
