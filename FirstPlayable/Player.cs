@@ -17,6 +17,7 @@ namespace FirstPlayable
         // Health System
         public HealthSystem healthSystem;
         public int playerDamage { get; set; }
+        public int KillCount { get; set; }
        
         // Player Position
         public int positionX { get; set; }
@@ -49,7 +50,6 @@ namespace FirstPlayable
         public Map map;
 
         public List<EnemyManager> enemies;
-        public Quest quest;
 
         public Player(int maxHealth, int health, int damage, int startX, int startY, char[,] mapLayout, GameManager gameManager)
         {
@@ -142,7 +142,7 @@ namespace FirstPlayable
                         
                         if (enemy.healthSystem.IsDead())
                         {
-                            quest.EnemiesKilled++;
+                            KillCount++;
                            enemy.enemyAlive = false;
                             Console.SetCursorPosition(enemy.positionX, enemy.positionY);
                             Console.BackgroundColor = ConsoleColor.DarkGray;

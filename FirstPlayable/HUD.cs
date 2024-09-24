@@ -10,22 +10,22 @@ namespace FirstPlayable
     {
         private Player player;
         private Map map;
-        private Quest quest;
+        private QuestManager questManager;
 
-        public HUD(Player player, Map map,Quest quest)
+        public HUD(Player player, Map map,QuestManager questManager)
         {
             this.player = player;
             this.map = map;
-            this.quest = quest;
+            this.questManager = questManager;
         }
 
         public void UpdateHUD()
         {
             string currentEnemyInfo = player.currentEnemy != null ? $"{player.currentEnemy.Name} | HP Remaining: ({player.currentEnemy.healthSystem.GetCurrentHealth()}/{player.currentEnemy.healthSystem.GetMaximumHealth()})" : "None";
             Console.SetCursorPosition(0, map.mapHeight + 1);
-            Console.WriteLine($"Player Health: {player.healthSystem.GetCurrentHealth()}/{player.healthSystem.GetMaximumHealth()} | Collected Seeds: {player.currentSeeds} | Attacking: {currentEnemyInfo}");
+            Console.WriteLine($"Player Health: {player.healthSystem.GetCurrentHealth()}/{player.healthSystem.GetMaximumHealth()} | Collected Seeds: {player.currentSeeds}| Kill Count: {player.KillCount} | Attacking: {currentEnemyInfo}");
             RedrawLiveLog();
-            DrawQuestLog();
+            UpdateQuestLog();
         }
 
         public void UpdateLegend()
@@ -79,15 +79,17 @@ namespace FirstPlayable
         }
         public void DrawQuestLog()
         {
-            Console.SetCursorPosition(0, map.mapHeight + 9);
+            Console.SetCursorPosition(0, map.mapHeight + 12);
             Console.WriteLine("Quests: ");
-            if(quest is QuestKillEnemies killquest)
+        }
+        public void UpdateQuestLog()
+        {
+            DrawQuestLog();
+            var quests = questManager.GetActiveQuests();
+            Console.WriteLine(quests.Count);
+            foreach (var quest in quests)
             {
-                Console.WriteLine($"Kill Enemies Quest: {killquest.EnemiesKilled / killquest.EnemiesToKill} enemies killed");
-            }
-            else
-            {
-                Console.WriteLine(" ");
+                Console.WriteLine(quest.Progress(player));
             }
         }
     }

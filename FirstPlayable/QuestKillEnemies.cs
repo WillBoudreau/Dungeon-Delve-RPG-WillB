@@ -34,5 +34,9 @@ namespace FirstPlayable
                 hud.UpdateHUD();
             }
         }
+        public override string Progress(Player player)
+        {
+            return $"Kill {player.KillCount} / {enemiesToKill} enemies";
+        }
     }
 }

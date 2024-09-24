@@ -12,7 +12,7 @@ namespace FirstPlayable
         private HUD hud;
         private List<Quest> activeQuests;
         private List<Quest> completedQuests;
-
+        private QuestKillEnemies questKillEnemies;
         public QuestManager(Player player,HUD hud)
         {
             this.player = player;
@@ -21,7 +21,7 @@ namespace FirstPlayable
             completedQuests = new List<Quest>();
         }
         public void AddQuest(Quest quest)
-        {
+        { 
             activeQuests.Add(quest);
             quest.Started(hud);
         }
@@ -30,9 +30,13 @@ namespace FirstPlayable
             if(activeQuests.Contains(quest))
             {
                 activeQuests.Remove(quest);
-                activeQuests.Add(quest);
-                quest.Complete(hud);    
+                completedQuests.Add(quest);
+                quest.Complete(hud);  
             }
+        }
+        public List<Quest> GetActiveQuests()
+        {
+            return activeQuests;
         }
     }
 }

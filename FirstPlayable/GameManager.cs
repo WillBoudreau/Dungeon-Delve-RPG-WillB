@@ -20,7 +20,6 @@ namespace FirstPlayable
         private Stopwatch levelTimer = new Stopwatch();
         private Map map;
         private Player player;
-        private Quest quest;
         private QuestManager questManager;
 
         Boss boss;
@@ -45,7 +44,11 @@ namespace FirstPlayable
             }
             map = new Map(GetPath(currentLevel), enemies);
             player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, this);
-            hud = new HUD(player, map,quest);
+            questManager = new QuestManager(player,hud);
+            hud = new HUD(player, map,questManager);
+
+            QuestKillEnemies questKillEnemies = new QuestKillEnemies(5);
+            questManager.AddQuest(questKillEnemies);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
             soundPlayer.PlayLooping();
             
