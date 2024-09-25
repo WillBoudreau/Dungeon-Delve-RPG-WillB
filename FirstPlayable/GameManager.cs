@@ -22,6 +22,8 @@ namespace FirstPlayable
         private Player player;
         private QuestManager questManager;
 
+        QuestKillEnemies questKillEnemies;
+
         Boss boss;
         Goblin goblin;
         Runner runner;
@@ -43,14 +45,13 @@ namespace FirstPlayable
                 currentLevel = settings.MapFileName;
             }
             map = new Map(GetPath(currentLevel), enemies);
-            player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, this);
+            player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, this,questManager);
             questManager = new QuestManager(player,hud);
             hud = new HUD(player, map,questManager);
-
-            QuestKillEnemies questKillEnemies = new QuestKillEnemies(5);
-            questManager.AddQuest(questKillEnemies);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
             soundPlayer.PlayLooping();
+            questKillEnemies = new QuestKillEnemies(questManager.numofKills);
+            questManager.AddQuest(questKillEnemies);
             
 
         }
@@ -71,6 +72,7 @@ namespace FirstPlayable
             map.UpdateMap(player, goblin, boss, runner);
             hud.UpdateLegend();
             hud.UpdateHUD();
+            questManager.CheckQuestProgress();
         }
 
 

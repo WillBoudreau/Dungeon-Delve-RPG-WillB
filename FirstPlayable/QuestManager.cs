@@ -13,12 +13,14 @@ namespace FirstPlayable
         private List<Quest> activeQuests;
         private List<Quest> completedQuests;
         private QuestKillEnemies questKillEnemies;
+        public int numofKills;
         public QuestManager(Player player,HUD hud)
         {
             this.player = player;
             this.hud = hud;
             activeQuests = new List<Quest>();
             completedQuests = new List<Quest>();
+            numofKills = 5;
         }
         public void AddQuest(Quest quest)
         { 
@@ -31,9 +33,23 @@ namespace FirstPlayable
             {
                 activeQuests.Remove(quest);
                 completedQuests.Add(quest);
-                quest.Complete(hud);  
+                quest.Complete(hud,player);  
             }
         }
+        public void CheckQuestProgress()
+        {
+            foreach(Quest quest in activeQuests)
+            {
+                if(quest is  QuestKillEnemies killQuest)
+                {
+                    if(player.KillCount >= killQuest.EnemiesKilled)
+                    {
+                        CompleteQuest(killQuest);
+                    }
+                }
+            }
+        }
+
         public List<Quest> GetActiveQuests()
         {
             return activeQuests;

@@ -46,12 +46,13 @@ namespace FirstPlayable
         public ItemManager itemManager;
 
         public GameManager gameManager;
+        public QuestManager questManager;
 
         public Map map;
 
         public List<EnemyManager> enemies;
 
-        public Player(int maxHealth, int health, int damage, int startX, int startY, char[,] mapLayout, GameManager gameManager)
+        public Player(int maxHealth, int health, int damage, int startX, int startY, char[,] mapLayout, GameManager gameManager,QuestManager questManager)
         {
             healthSystem = new HealthSystem(maxHealth);
             healthSystem.Heal(health);
@@ -61,6 +62,7 @@ namespace FirstPlayable
             currentTile = mapLayout[startY, startX];
             itemManager = new ItemManager(this);
             this.gameManager = gameManager;
+            this.questManager = questManager;
             liveLog = new List<string>();
         }
 

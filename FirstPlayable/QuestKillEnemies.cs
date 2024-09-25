@@ -15,11 +15,13 @@ namespace FirstPlayable
             this.enemiesToKill = enemiesToKill;
             this.enemiesKilled = 0;
         }
-
-        public override void Complete(HUD hud)
+        public override void Complete(HUD hud,Player player)
         {
-            IsCurrent = false;
-            Console.WriteLine("Quest Complete: You have killed all " + enemiesToKill + " enemies");
+            if (enemiesKilled >= player.KillCount)
+            {
+                IsCurrent = false;
+                Console.WriteLine("Quest Complete: You have killed all " + enemiesToKill + " enemies");
+            }
             if(hud != null)
             {
                 hud.UpdateHUD();

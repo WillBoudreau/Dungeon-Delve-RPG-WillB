@@ -12,7 +12,7 @@ namespace FirstPlayable
         public int EnemiesToKill;
         public int EnemiesKilled;
         public abstract string Progress(Player player);
-        public abstract void Complete(HUD hud);
+        public abstract void Complete(HUD hud,Player player);
         public abstract void Started(HUD hud);
 
     }
