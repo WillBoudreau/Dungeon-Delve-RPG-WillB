@@ -89,7 +89,7 @@ namespace FirstPlayable
             Console.WriteLine(quests.Count);
             foreach (var quest in quests)
             {
-                Console.WriteLine(quest.Progress(player));
+                Console.WriteLine(quest.Progress());
             }
         }
     }

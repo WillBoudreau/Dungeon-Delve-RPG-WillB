@@ -9,9 +9,7 @@ namespace FirstPlayable
     internal abstract class Quest
     { 
         public bool IsCurrent { get; set; }
-        public int EnemiesToKill;
-        public int EnemiesKilled;
-        public abstract string Progress(Player player);
+        public abstract string Progress();
         public abstract void Complete(HUD hud,Player player);
         public abstract void Started(HUD hud);
 

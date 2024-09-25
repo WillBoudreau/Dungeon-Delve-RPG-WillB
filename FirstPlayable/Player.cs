@@ -17,7 +17,7 @@ namespace FirstPlayable
         // Health System
         public HealthSystem healthSystem;
         public int playerDamage { get; set; }
-        public int KillCount { get; set; }
+        public int KillCount;
        
         // Player Position
         public int positionX { get; set; }

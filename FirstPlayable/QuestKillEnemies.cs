@@ -8,16 +8,16 @@ namespace FirstPlayable
 {
     internal class QuestKillEnemies : Quest
     {
-        int enemiesToKill;
-        int enemiesKilled;
-        public QuestKillEnemies(int enemiesToKill)
+        public int enemiesToKill;
+        Player player;
+        public QuestKillEnemies(int enemiesToKill,Player player)
         {
             this.enemiesToKill = enemiesToKill;
-            this.enemiesKilled = 0;
+            this.player = player;
         }
         public override void Complete(HUD hud,Player player)
         {
-            if (enemiesKilled >= player.KillCount)
+            if (player.KillCount >= enemiesToKill)
             {
                 IsCurrent = false;
                 Console.WriteLine("Quest Complete: You have killed all " + enemiesToKill + " enemies");
@@ -36,7 +36,7 @@ namespace FirstPlayable
                 hud.UpdateHUD();
             }
         }
-        public override string Progress(Player player)
+        public override string Progress()
         {
             return $"Kill {player.KillCount} / {enemiesToKill} enemies";
         }

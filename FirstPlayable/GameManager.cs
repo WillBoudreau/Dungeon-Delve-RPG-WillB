@@ -50,7 +50,7 @@ namespace FirstPlayable
             hud = new HUD(player, map,questManager);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
             soundPlayer.PlayLooping();
-            questKillEnemies = new QuestKillEnemies(questManager.numofKills);
+            questKillEnemies = new QuestKillEnemies(questManager.numofKills,player);
             questManager.AddQuest(questKillEnemies);
             
 
@@ -73,6 +73,7 @@ namespace FirstPlayable
             hud.UpdateLegend();
             hud.UpdateHUD();
             questManager.CheckQuestProgress();
+            Console.WriteLine(player.KillCount);
         }
 
 

@@ -38,15 +38,20 @@ namespace FirstPlayable
         }
         public void CheckQuestProgress()
         {
+            List<Quest> questsToComplete = new List<Quest>();
             foreach(Quest quest in activeQuests)
             {
                 if(quest is  QuestKillEnemies killQuest)
                 {
-                    if(player.KillCount >= killQuest.EnemiesKilled)
-                    {
-                        CompleteQuest(killQuest);
+                    if(player.KillCount >= killQuest.enemiesToKill)
+                    { 
+                            questsToComplete.Add(killQuest);
                     }
                 }
+            }
+            foreach(Quest quest in questsToComplete)
+            {
+                CompleteQuest(quest);
             }
         }
 
