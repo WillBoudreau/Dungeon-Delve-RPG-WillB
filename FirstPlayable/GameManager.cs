@@ -22,7 +22,8 @@ namespace FirstPlayable
         private Player player;
         private QuestManager questManager;
 
-        QuestKillEnemies questKillEnemies;
+        //QuestKillEnemies questKillEnemies;
+        //QuestCollectItems questCollectItems;
 
         Boss boss;
         Goblin goblin;
@@ -50,8 +51,12 @@ namespace FirstPlayable
             hud = new HUD(player, map,questManager);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
             soundPlayer.PlayLooping();
-            questKillEnemies = new QuestKillEnemies(questManager.numofKills,player);
-            questManager.AddQuest(questKillEnemies);
+            //Added by Will
+            questManager.Init();
+            //questKillEnemies = new QuestKillEnemies(questManager.numofKills,player);
+            //questCollectItems = new QuestCollectItems(30,player);
+            //questManager.AddQuest(questKillEnemies);
+            //questManager.AddQuest(questCollectItems);
             
 
         }
@@ -72,8 +77,8 @@ namespace FirstPlayable
             map.UpdateMap(player, goblin, boss, runner);
             hud.UpdateLegend();
             hud.UpdateHUD();
-            questManager.CheckQuestProgress();
-            Console.WriteLine(player.KillCount);
+            //Added by Will
+            questManager.Update();
         }
 
 

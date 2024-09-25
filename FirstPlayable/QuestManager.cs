@@ -12,7 +12,6 @@ namespace FirstPlayable
         private HUD hud;
         private List<Quest> activeQuests;
         private List<Quest> completedQuests;
-        private QuestKillEnemies questKillEnemies;
         public int numofKills;
         public QuestManager(Player player,HUD hud)
         {
@@ -21,6 +20,17 @@ namespace FirstPlayable
             activeQuests = new List<Quest>();
             completedQuests = new List<Quest>();
             numofKills = 5;
+        }
+        public void Init()
+        {
+            QuestKillEnemies questKillEnemies = new QuestKillEnemies(numofKills,player);
+            QuestCollectItems questCollectItems = new QuestCollectItems(30,player);
+            AddQuest(questKillEnemies);
+            AddQuest(questCollectItems);
+        }
+        public void Update()
+        {
+            CheckQuestProgress();
         }
         public void AddQuest(Quest quest)
         { 
@@ -46,6 +56,13 @@ namespace FirstPlayable
                     if(player.KillCount >= killQuest.enemiesToKill)
                     { 
                             questsToComplete.Add(killQuest);
+                    }
+                }
+                else if(quest is QuestCollectItems collectQuest)
+                {
+                    if(player.currentSeeds >= collectQuest.itemsToCollect)
+                    {
+                        questsToComplete.Add(collectQuest);
                     }
                 }
             }
