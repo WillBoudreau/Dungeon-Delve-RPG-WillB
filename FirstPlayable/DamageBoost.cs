@@ -13,5 +13,10 @@ namespace FirstPlayable
             player.playerDamage += 1;
             player.UpdateLiveLog("Player Damage increased +1");
         }
+        internal override void Buy(Player player)
+        {
+            player.playerDamage += 1;
+            player.UpdateLiveLog("Bought a Damage Boost");
+        }
     }
 }

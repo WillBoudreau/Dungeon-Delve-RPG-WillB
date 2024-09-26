@@ -13,5 +13,10 @@ namespace FirstPlayable
             player.healthSystem.Heal(2);
             player.UpdateLiveLog("Gained +2 health");
         }
+        internal override void Buy(Player player)
+        {
+            player.healthSystem.Heal(2);
+            player.UpdateLiveLog("Bought a Health Potion");
+        }
     }
 }

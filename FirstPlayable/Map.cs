@@ -22,12 +22,14 @@ namespace FirstPlayable
         public int initialEnemyPositionX { get; set; }
         public int initialEnemyPositionY { get; set; }
 
-        private List<EnemyManager> enemies;  
+        private List<EnemyManager> enemies; 
+        private ShopManager shopManager;
         private Settings settings = new Settings();
 
-        public Map(string mapFileName, List<EnemyManager> enemies)
+        public Map(string mapFileName, List<EnemyManager> enemies,ShopManager shopManager)
         {
             this.enemies = enemies;
+            this.shopManager = shopManager;
             path = mapFileName;
             floor = File.ReadAllLines(path);
             CreateMap();
@@ -78,6 +80,10 @@ namespace FirstPlayable
                         layout[i, j] = '-';
                         var boss = new Boss(settings.BossInitialHealth, settings.BossInitialDamage, j, i, "Boss", layout);
                         enemies.Add(boss);
+                    }
+                    else if (layout[i,j] == 'S')
+                    {
+                        shopManager.SpawnShop();
                     }
                 }
             }

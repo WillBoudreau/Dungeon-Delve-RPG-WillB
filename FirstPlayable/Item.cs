@@ -9,5 +9,6 @@ namespace FirstPlayable
     public abstract class Item
     {
         internal abstract void Use(Player player);
+        internal abstract void Buy(Player player);
     }
 }

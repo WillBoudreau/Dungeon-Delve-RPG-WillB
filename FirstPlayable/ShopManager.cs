@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace FirstPlayable
 {
-    internal class ShopManager
+    internal class ShopManager 
     {
+        public ShopManager()
+        {
+            List<Shop> Shops = new List<Shop>();
+            Shops.Add(new PotionShop());
+        }
+        public void Init()
+        {
+
+        }
+        public void SpawnShop()
+        {
+            
+        }
     }
 }

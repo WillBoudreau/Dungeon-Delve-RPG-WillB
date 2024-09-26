@@ -21,9 +21,7 @@ namespace FirstPlayable
         private Map map;
         private Player player;
         private QuestManager questManager;
-
-        //QuestKillEnemies questKillEnemies;
-        //QuestCollectItems questCollectItems;
+        private ShopManager shopManager;
 
         Boss boss;
         Goblin goblin;
@@ -45,7 +43,8 @@ namespace FirstPlayable
             {
                 currentLevel = settings.MapFileName;
             }
-            map = new Map(GetPath(currentLevel), enemies);
+            shopManager = new ShopManager();
+            map = new Map(GetPath(currentLevel), enemies,shopManager);
             player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, this,questManager);
             questManager = new QuestManager(player,hud);
             hud = new HUD(player, map,questManager);
@@ -201,7 +200,7 @@ namespace FirstPlayable
             }
             
             
-            map = new Map(GetPath(currentLevel), enemies);
+            map = new Map(GetPath(currentLevel), enemies, shopManager);
             
             player.positionX = map.initialPlayerPositionX;
             player.positionY = map.initialPlayerPositionY;
