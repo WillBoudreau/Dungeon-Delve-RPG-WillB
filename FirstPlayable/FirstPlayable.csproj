@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Boss.cs" />
     <Compile Include="DamageBoost.cs" />
+    <Compile Include="FinalQuest.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="Goblin.cs" />
     <Compile Include="HealthPotion.cs" />
