@@ -230,7 +230,10 @@ namespace FirstPlayable
                     youWin = true;
                     gameOver = true;
                 }
-
+                if (map.layout[movementY, movementX] == 'S')
+                {
+                    itemManager.UseItem("HealthPotion");
+                }
 
 
                 // collectable seeds

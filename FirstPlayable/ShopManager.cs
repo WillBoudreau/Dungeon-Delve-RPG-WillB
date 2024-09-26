@@ -6,20 +6,38 @@ using System.Threading.Tasks;
 
 namespace FirstPlayable
 {
-    internal class ShopManager 
+    internal class ShopManager
     {
+        private List<Shop> Shops;
+
         public ShopManager()
         {
-            List<Shop> Shops = new List<Shop>();
+            Shops = new List<Shop>();
             Shops.Add(new PotionShop());
         }
+
         public void Init()
         {
-
+            SpawnShop('S');
         }
-        public void SpawnShop()
+
+        public void SpawnShop(char tile)
         {
-            
+            if (IsValidTile(tile))
+            {
+                Shop shop = CreateShop(tile);
+                Shops.Add(shop);
+            }
+        }
+
+        private bool IsValidTile(char tile)
+        {
+            return true;
+        }
+
+        private Shop CreateShop(char tile)
+        {
+            return new PotionShop();
         }
     }
 }

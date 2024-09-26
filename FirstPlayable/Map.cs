@@ -83,7 +83,7 @@ namespace FirstPlayable
                     }
                     else if (layout[i,j] == 'S')
                     {
-                        shopManager.SpawnShop();
+                        shopManager.SpawnShop('S');
                     }
                 }
             }
