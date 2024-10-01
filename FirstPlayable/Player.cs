@@ -47,12 +47,13 @@ namespace FirstPlayable
 
         public GameManager gameManager;
         public QuestManager questManager;
+        public ShopManager shopManager;
 
         public Map map;
 
         public List<EnemyManager> enemies;
 
-        public Player(int maxHealth, int health, int damage, int startX, int startY, char[,] mapLayout, GameManager gameManager,QuestManager questManager)
+        public Player(int maxHealth, int health, int damage, int startX, int startY, char[,] mapLayout, GameManager gameManager,QuestManager questManager, ShopManager shopManager)
         {
             healthSystem = new HealthSystem(maxHealth);
             healthSystem.Heal(health);
@@ -64,6 +65,7 @@ namespace FirstPlayable
             this.gameManager = gameManager;
             this.questManager = questManager;
             liveLog = new List<string>();
+            this.shopManager = shopManager;
         }
 
 
@@ -232,7 +234,7 @@ namespace FirstPlayable
                 }
                 if (map.layout[movementY, movementX] == 'S')
                 {
-                    itemManager.UseItem("HealthPotion");
+                    shopManager.EnterShop(this);
                 }
 
 

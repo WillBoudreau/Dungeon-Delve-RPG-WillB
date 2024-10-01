@@ -22,42 +22,41 @@ namespace FirstPlayable
         private Player player;
         private QuestManager questManager;
         private ShopManager shopManager;
+        private ShopManager shop;
 
+        //Need to fix
         Boss boss;
         Goblin goblin;
         Runner runner;
 
         private Settings settings = new Settings();
+        //Need to fix
         private List<EnemyManager> enemies = new List<EnemyManager>();
         private HUD hud;
 
         public string currentLevel { get; set; }
 
         public SoundPlayer soundPlayer;
-
-        public void Init()
+        public GameManager()
         {
-
-            // Initialization
             if (currentLevel == null)
             {
                 currentLevel = settings.MapFileName;
             }
+            shop = new ShopManager();
             shopManager = new ShopManager();
-            map = new Map(GetPath(currentLevel), enemies,shopManager);
-            player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, this,questManager);
-            questManager = new QuestManager(player,hud);
-            hud = new HUD(player, map,questManager);
+            map = new Map(GetPath(currentLevel), enemies, shopManager);
+            player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, this, questManager, shop);
+            questManager = new QuestManager(player, hud);
+            hud = new HUD(player, map, questManager);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
             soundPlayer.PlayLooping();
+        }
+        public void Init()
+        {
             //Added by Will
             questManager.Init();
-            //questKillEnemies = new QuestKillEnemies(questManager.numofKills,player);
-            //questCollectItems = new QuestCollectItems(30,player);
-            //questManager.AddQuest(questKillEnemies);
-            //questManager.AddQuest(questCollectItems);
-            
-
+            shopManager.Init(map);
         }
         
         /// <summary>
