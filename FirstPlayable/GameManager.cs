@@ -22,31 +22,27 @@ namespace FirstPlayable
         private Player player;
         private QuestManager questManager;
         private ShopManager shopManager;
-        private ShopManager shop;
+        private Settings settings = new Settings();
+        private EnemyManager enemyMan;
+        private HUD hud;
+        public SoundPlayer soundPlayer;
 
         //Need to fix
         Boss boss;
         Goblin goblin;
         Runner runner;
 
-        private Settings settings = new Settings();
-        //Need to fix
-        private List<EnemyManager> enemies = new List<EnemyManager>();
-        private HUD hud;
 
-        public string currentLevel { get; set; }
+        //public string currentLevel { get; set; }
 
-        public SoundPlayer soundPlayer;
+
+        bool IsShopping = false;
         public GameManager()
         {
-            if (currentLevel == null)
-            {
-                currentLevel = settings.MapFileName;
-            }
-            shop = new ShopManager();
+            enemyMan = new EnemyManager();
             shopManager = new ShopManager();
-            map = new Map(GetPath(currentLevel), enemies, shopManager);
-            player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, this, questManager, shop);
+            map = new Map(GetPath(""), enemyMan, shopManager);
+            player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, questManager, shopManager);
             questManager = new QuestManager(player, hud);
             hud = new HUD(player, map, questManager);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
@@ -54,7 +50,6 @@ namespace FirstPlayable
         }
         public void Init()
         {
-            //Added by Will
             questManager.Init();
             shopManager.Init(map);
         }
@@ -75,7 +70,6 @@ namespace FirstPlayable
             map.UpdateMap(player, goblin, boss, runner);
             hud.UpdateLegend();
             hud.UpdateHUD();
-            //Added by Will
             questManager.Update();
         }
 
@@ -83,9 +77,9 @@ namespace FirstPlayable
         public void Draw()
         {
             GameDisplay();
-            foreach (var enemy in enemies)
+            foreach (var enemy in enemyMan.enemies)
             {
-                enemy.Movement(player.positionX, player.positionY, map.mapWidth, map.mapHeight, map.layout, player, enemies);
+                enemy.Movement(player.positionX, player.positionY, map.mapWidth, map.mapHeight, map.layout, player);
             }
         }
 
@@ -149,6 +143,18 @@ namespace FirstPlayable
         // player wins
         if (player.youWin)
         {
+           Win();
+        }
+        // players dead
+        else
+        {
+            Lose();
+        }
+    }
+
+
+        void Win()
+        {
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("You win!");
             Console.WriteLine($"\nYou collected: {player.currentSeeds} / 30 Seeds!");
@@ -158,56 +164,18 @@ namespace FirstPlayable
             EndLevel();
             Console.WriteLine("-------------------------------------------");
             Console.WriteLine("-------------------------------------------");
-        Console.ReadKey(true);
+            Console.ReadKey(true);
         }
-        // players dead
-        else
+        void Lose()
         {
-        Console.ForegroundColor = ConsoleColor.Red;
-        int centerX = (Console.WindowWidth - "You died...".Length) / 2;
-        Console.SetCursorPosition(centerX, Console.CursorTop);
-        Console.WriteLine("You died...");
-            
-        Console.ReadKey(true);
+            Console.ForegroundColor = ConsoleColor.Red;
+            int centerX = (Console.WindowWidth - "You died...".Length) / 2;
+            Console.SetCursorPosition(centerX, Console.CursorTop);
+            Console.WriteLine("You died...");
+
+            Console.ReadKey(true);
         }
-    }
-
-
-
-        public void ChangeLevel()
-        {
-            enemies.Clear();
-
-
-
-            if (currentLevel == settings.MapFileName)
-            {
-                currentLevel = settings.Map2FileName;
-            }
-            else if (currentLevel == settings.Map2FileName)
-            {
-                currentLevel = settings.Map3FileName;
-            }
-            else if (currentLevel == settings.Map3FileName)
-            {
-                currentLevel = settings.Map4FileName;
-            }
-            else if (currentLevel == settings.Map4FileName)
-            {
-                player.youWin = true;
-                player.gameOver = true;
-            }
-            
-            
-            map = new Map(GetPath(currentLevel), enemies, shopManager);
-            
-            player.positionX = map.initialPlayerPositionX;
-            player.positionY = map.initialPlayerPositionY;
-            
-            Console.Clear();
-            
-            map.UpdateMap(player, goblin, boss, runner);
-        }
+        
 
 
 
@@ -231,7 +199,7 @@ namespace FirstPlayable
 
         private void GameDisplay()
         {
-            player.PlayerInput(map, enemies);
+            player.PlayerInput(map, enemyMan.enemies);
            
         }
             

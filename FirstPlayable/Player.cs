@@ -15,7 +15,7 @@ namespace FirstPlayable
         
 
         // Health System
-        public HealthSystem healthSystem;
+        public HealthSystem healthSystem { get; private set; }
         public int playerDamage { get; set; }
         public int KillCount;
        
@@ -37,7 +37,7 @@ namespace FirstPlayable
         public Settings settings = new Settings();
 
         // Enemy 
-        public EnemyManager currentEnemy { get; set; }
+        public Enemy currentEnemy { get; set; } = null;
 
         // Log list
         private List<string> liveLog;
@@ -45,15 +45,14 @@ namespace FirstPlayable
         // Item Manager
         public ItemManager itemManager;
 
-        public GameManager gameManager;
         public QuestManager questManager;
         public ShopManager shopManager;
 
         public Map map;
 
-        public List<EnemyManager> enemies;
+        public List<Enemy> enemies;
 
-        public Player(int maxHealth, int health, int damage, int startX, int startY, char[,] mapLayout, GameManager gameManager,QuestManager questManager, ShopManager shopManager)
+        public Player(int maxHealth, int health, int damage, int startX, int startY, char[,] mapLayout,QuestManager questManager, ShopManager shopManager)
         {
             healthSystem = new HealthSystem(maxHealth);
             healthSystem.Heal(health);
@@ -62,7 +61,6 @@ namespace FirstPlayable
             positionY = startY;
             currentTile = mapLayout[startY, startX];
             itemManager = new ItemManager(this);
-            this.gameManager = gameManager;
             this.questManager = questManager;
             liveLog = new List<string>();
             this.shopManager = shopManager;
@@ -70,7 +68,7 @@ namespace FirstPlayable
 
 
         // Receives player input
-        public void PlayerInput(Map map, List<EnemyManager> enemies)
+        public void PlayerInput(Map map, List<Enemy> enemies)
         {
             ConsoleKeyInfo playerController;
             bool moved = false;
@@ -125,7 +123,7 @@ namespace FirstPlayable
         }
 
         // handles things like collision checks and what the player is moving towards
-        private void HandleMovement(Map map, List<EnemyManager> enemies, ref bool moved, ref int newPlayerPositionX, ref int newPlayerPositionY, int movementX, int movementY)
+        private void HandleMovement(Map map, List<Enemy> enemies, ref bool moved, ref int newPlayerPositionX, ref int newPlayerPositionY, int movementX, int movementY)
         {
             if (moved == false && map.layout[movementY, movementX] != '#')
             {
@@ -134,7 +132,7 @@ namespace FirstPlayable
                 {
                     if (movementY == enemy.positionY && movementX == enemy.positionX)
                     {
-                        currentEnemy = enemy;
+                        //currentEnemy = enemy.Name;
                         enemy.healthSystem.Damage(playerDamage);
                         UpdateLiveLog($"Dealt {playerDamage} damage to {enemy.Name}");
                         if (healthSystem.IsDead())
@@ -224,7 +222,7 @@ namespace FirstPlayable
 
                 if(map.layout[movementY, movementX] == '%')
                 {
-                    gameManager.ChangeLevel();
+                    map.ChangeLevel();
                 }
 
                 if (map.layout[movementY, movementX] == '>')

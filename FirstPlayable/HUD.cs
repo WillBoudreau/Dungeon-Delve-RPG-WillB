@@ -11,14 +11,17 @@ namespace FirstPlayable
         private Player player;
         private Map map;
         private QuestManager questManager;
-
         public HUD(Player player, Map map,QuestManager questManager)
         {
             this.player = player;
             this.map = map;
             this.questManager = questManager;
         }
-
+        public void Update()
+        {
+           UpdateHUD();
+           UpdateLegend();
+        }
         public void UpdateHUD()
         {
             string currentEnemyInfo = player.currentEnemy != null ? $"{player.currentEnemy.Name} | HP Remaining: ({player.currentEnemy.healthSystem.GetCurrentHealth()}/{player.currentEnemy.healthSystem.GetMaximumHealth()})" : "None";

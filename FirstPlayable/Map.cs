@@ -21,14 +21,16 @@ namespace FirstPlayable
         public int initialPlayerPositionY { get; set; }
         public int initialEnemyPositionX { get; set; }
         public int initialEnemyPositionY { get; set; }
-
-        private List<EnemyManager> enemies; 
+        public string currentLevel { get; set; }
+ 
+        private EnemyManager enemyManager;
         private ShopManager shopManager;
+        private Player player;
         private Settings settings = new Settings();
 
-        public Map(string mapFileName, List<EnemyManager> enemies,ShopManager shopManager)
+        public Map(string mapFileName, EnemyManager enemyManager,ShopManager shopManager)
         {
-            this.enemies = enemies;
+            this.enemyManager = enemyManager;
             this.shopManager = shopManager;
             path = mapFileName;
             floor = File.ReadAllLines(path);
@@ -67,19 +69,19 @@ namespace FirstPlayable
                         initialEnemyPositionX = j;
                         initialEnemyPositionY = i;
                         var enemy = new Goblin(settings.GoblinInitialHealth,settings.GoblinInitialDamage, j, i, "Goblin", layout); 
-                        enemies.Add(enemy);
+                        enemyManager.enemies.Add(enemy);
                     }
                     else if (layout[i, j] == '_')
                     {
                         layout[i, j] = '-';
                         var runner = new Runner(settings.RunnerInitialHealth, settings.RunnerInitialDamage, j, i, "Runner", layout); 
-                        enemies.Add(runner);
+                        enemyManager.enemies.Add(runner);
                     }
                     else if (layout[i, j] == '@')
                     {
                         layout[i, j] = '-';
                         var boss = new Boss(settings.BossInitialHealth, settings.BossInitialDamage, j, i, "Boss", layout);
-                        enemies.Add(boss);
+                        enemyManager.enemies.Add(boss);
                     }
                     else if (layout[i,j] == 'S')
                     {
@@ -186,7 +188,7 @@ namespace FirstPlayable
             player.Draw();
 
             
-            foreach (var enemy in enemies)
+            foreach (var enemy in enemyManager.enemies)
             {
                 enemy.Draw();
             }
@@ -195,7 +197,36 @@ namespace FirstPlayable
            
             
         }
+        public void ChangeLevel()
+        {
+            //enemies.Clear();
 
-        
+
+
+            if (currentLevel == settings.MapFileName)
+            {
+                 currentLevel = settings.Map2FileName;
+            }
+            else if (currentLevel == settings.Map2FileName)
+            {
+                currentLevel = settings.Map3FileName;
+            }
+            else if (currentLevel == settings.Map3FileName)
+            {
+                currentLevel = settings.Map4FileName;
+            }
+            else if (currentLevel == settings.Map4FileName)
+            {
+                player.youWin = true;
+                player.gameOver = true;
+            }
+
+            player.positionX = initialPlayerPositionX;
+            player.positionY = initialPlayerPositionY;
+
+            Console.Clear();
         }
+
+
+    }
     }

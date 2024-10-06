@@ -9,7 +9,6 @@ namespace FirstPlayable
     internal class ShopManager
     {
         private List<Shop> Shops;
-        
 
         public ShopManager()
         {

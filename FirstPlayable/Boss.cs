@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FirstPlayable
 {
-    internal class Boss : EnemyManager
+    internal class Boss : Enemy
     {
 
         public Boss(int maxHealth, int damage, int startX, int startY, string name, char[,] mapLayout) : base(maxHealth, damage, startX, startY, name, mapLayout)
@@ -33,7 +33,7 @@ namespace FirstPlayable
         }
 
 
-        public override void Movement(int playerX, int playerY, int mapWidth, int mapHeight, char[,] mapLayout, Player player, List<EnemyManager> enemies)
+        public override void Movement(int playerX, int playerY, int mapWidth, int mapHeight, char[,] mapLayout, Player player)
         {
             int enemyMovementX = positionX;
             int enemyMovementY = positionY;
