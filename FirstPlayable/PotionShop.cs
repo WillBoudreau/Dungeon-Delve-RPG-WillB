@@ -17,9 +17,9 @@ namespace FirstPlayable
         {
             Console.Clear();
             Debug.WriteLine("Entered Potion Shop");
-            Introduction();
+            Introduction(player);
         }
-        public void Introduction()
+        public void Introduction(Player player)
         {
             Console.WriteLine("Welcome to the Potion Shop!");
             Console.WriteLine("Here you can buy potions to heal yourself");
@@ -30,20 +30,84 @@ namespace FirstPlayable
             Console.WriteLine(" ");
             Console.WriteLine("Enter the number of the option you want to choose:");
             Console.WriteLine(" ");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    DisplayItems();
+                    Buy(player, null);
+                    break;
+                case 2:
+                    LeaveShop(player);
+                    break;
+                default:
+                    Console.WriteLine("Invalid option");
+                    break;
+            }
+        }
+        void DisplayItems()
+        {
+            Console.WriteLine("1. Small Potion - 1 gold");
+            Console.WriteLine("2. Medium Potion - 5 gold");
+            Console.WriteLine("3. Large Potion - 10 gold");
         }
         public override void Buy(Player player,Item item)
         {
-            item.Buy(player);
+            Console.WriteLine("Please enter the number of the potion you would like to buy:");
+            Console.WriteLine(" ");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    if (player.currentSeeds >= 1)
+                    {
+                        player.currentSeeds -= 1;
+                        player.healthSystem.currentHealth += 1;
+                        Console.WriteLine("You have bought a potion for 10 gold");
+                        Console.WriteLine("You now have " + player.currentSeeds + " gold");
+                        Console.WriteLine("You now have " + player.healthSystem.currentHealth + " health");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You do not have enough gold to buy this potion");
+                    }
+                    break;
+                case 2:
+                    if (player.currentSeeds >= 5)
+                    {
+                        player.currentSeeds -= 5;
+                        player.healthSystem.currentHealth += 5;
+                        Console.WriteLine("You have bought a potion for 20 gold");
+                        Console.WriteLine("You now have " + player.currentSeeds + " gold");
+                        Console.WriteLine("You now have " + player.healthSystem.currentHealth + " health");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You do not have enough gold to buy this potion");
+                    }
+                    break;
+                case 3:
+                    if (player.currentSeeds >= 10)
+                    {
+                        player.currentSeeds -= 10;
+                        player.healthSystem.currentHealth += 10;
+                        Console.WriteLine("You have bought a potion for 30 gold");
+                        Console.WriteLine("You now have " + player.currentSeeds + " gold");
+                        Console.WriteLine("You now have " + player.healthSystem.currentHealth+ " health");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You do not have enough gold to buy this potion");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid option");
+                    break;
+            }
         }
-
-        public override void Sell(Player player,Item item)
+        public override void LeaveShop(Player player)
         {
-            
-        }
-
-        public override void UpdateShop(Player player,Item itemn)
-        {
-            
+            Console.WriteLine("You have left the shop");
         }
     }
 }

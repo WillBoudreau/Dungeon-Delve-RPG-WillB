@@ -10,8 +10,8 @@ namespace FirstPlayable
     internal class HealthSystem
     {
         // variables | encapsulation
-        private int maximumHealth;
-        private int currentHealth;
+        public int maximumHealth;
+        public int currentHealth;
 
         public HealthSystem(int maxHealth)
         {

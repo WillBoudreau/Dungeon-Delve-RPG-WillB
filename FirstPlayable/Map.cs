@@ -29,9 +29,9 @@ namespace FirstPlayable
         private ShopManager shopManager;
         private Player player;
         private Settings settings = new Settings();
-        public Map(string mapFileName, EnemyManager enemyManager,ShopManager shopManager)
+        public Map(string mapFileName, EnemyManager enemyManager,ShopManager shopManager,Player player)
         {
-            
+           this.player = player;
             this.enemyManager = enemyManager;
             this.shopManager = shopManager;
             path = mapFileName;
@@ -94,7 +94,7 @@ namespace FirstPlayable
         }
 
         // draws out map on screen
-        public void UpdateMap(Player player, Goblin goblin, Boss boss, Runner runner)
+        public void UpdateMap(Player player)
         {
             if (!mapDrawn)
             { 
@@ -171,7 +171,7 @@ namespace FirstPlayable
                         }
                         if (tile == '_' && !player.levelComplete)
                         {
-                            runner.positionX = l;
+                            EnemyManager.runner.positionX = l;
                             runner.positionY = k;
                             layout[k, l] = '-';
                         }
@@ -190,16 +190,16 @@ namespace FirstPlayable
             player.Draw();
 
             
-            foreach (var enemy in enemyManager.enemies)
-            {
-                enemy.Draw();
-            }
+            //foreach (var enemy in enemyManager.enemies)
+            //{
+            //    enemy.Draw();
+            //}
            
             Console.SetCursorPosition(0, 0);
            
             
         }
-        public void ChangeLevel()
+        public void ChangeLevel(Player player)
         {
             //enemies.Clear();
 

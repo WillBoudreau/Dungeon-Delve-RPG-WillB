@@ -222,7 +222,7 @@ namespace FirstPlayable
 
                 if(map.layout[movementY, movementX] == '%')
                 {
-                    map.ChangeLevel();
+                    map.ChangeLevel(this);
                 }
 
                 if (map.layout[movementY, movementX] == '>')
