@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace FirstPlayable
 {
@@ -27,9 +29,9 @@ namespace FirstPlayable
         private ShopManager shopManager;
         private Player player;
         private Settings settings = new Settings();
-
         public Map(string mapFileName, EnemyManager enemyManager,ShopManager shopManager)
         {
+            
             this.enemyManager = enemyManager;
             this.shopManager = shopManager;
             path = mapFileName;
