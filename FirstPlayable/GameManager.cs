@@ -26,11 +26,7 @@ namespace FirstPlayable
         private EnemyManager enemyMan;
         private HUD hud;
         public SoundPlayer soundPlayer;
-
-        //Need to fix
-        Boss boss;
-        Goblin goblin;
-        Runner runner;
+        public string CurrentLevel { get; set; }
 
 
         //public string currentLevel { get; set; }
@@ -41,7 +37,7 @@ namespace FirstPlayable
         {
             enemyMan = new EnemyManager();
             shopManager = new ShopManager();
-            map = new Map(GetPath("RPGMap.txt"), enemyMan, shopManager,player);
+            map = new Map(enemyMan, shopManager,player);
             player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, questManager, shopManager);
             questManager = new QuestManager(player, hud);
             hud = new HUD(player, map, questManager);
@@ -67,7 +63,7 @@ namespace FirstPlayable
 
         public void Update()
         {
-            map.UpdateMap(player, goblin, boss, runner);
+            map.UpdateMap(player);
             hud.UpdateLegend();
             hud.UpdateHUD();
             questManager.Update();

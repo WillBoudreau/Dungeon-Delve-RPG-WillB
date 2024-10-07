@@ -16,6 +16,7 @@ namespace FirstPlayable
         public int PlayerInitialLevel { get; set; } = 1;
 
         // world Settings
+        public string[] RPGMaps { get; set; } = { "RPGMap.txt", "RPGMap2.txt", "RPGMap3.txt", "RPGMap4.txt" };
         public string MapFileName { get; set; } = "RPGMap.txt";
         public string Map2FileName { get; set; } = "RPGMap2.txt";
         public string Map3FileName { get; set; } = "RPGMap3.txt";

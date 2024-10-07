@@ -29,12 +29,12 @@ namespace FirstPlayable
         private ShopManager shopManager;
         private Player player;
         private Settings settings = new Settings();
-        public Map(string mapFileName, EnemyManager enemyManager,ShopManager shopManager,Player player)
+        public Map( EnemyManager enemyManager,ShopManager shopManager,Player player)
         {
            this.player = player;
             this.enemyManager = enemyManager;
             this.shopManager = shopManager;
-            path = mapFileName;
+            path = settings.RPGMaps[0];
             floor = File.ReadAllLines(path);
             CreateMap();
         }
@@ -97,10 +97,10 @@ namespace FirstPlayable
         public void UpdateMap(Player player)
         {
             if (!mapDrawn)
-            { 
-            Console.Clear();
+            {
+                Console.Clear();
 
-            Console.BackgroundColor = ConsoleColor.DarkGray;
+                Console.BackgroundColor = ConsoleColor.DarkGray;
 
                 for (int k = 0; k < mapHeight; k++)
                 {
@@ -147,7 +147,6 @@ namespace FirstPlayable
                                 break;
                         }
 
-
                         if (tile == '=' && !player.levelComplete)
                         {
                             player.positionX = l;
@@ -156,58 +155,27 @@ namespace FirstPlayable
                             layout[k, l] = '-';
                         }
 
-                        if (tile == '*' && !player.levelComplete)
-                        {
-                            goblin.positionX = l;
-                            goblin.positionY = k;
-                            layout[k, l] = '-';
-                        }
-                        if (tile == '@' && !player.levelComplete)
-                        {
-                            boss.positionX = l;
-                            boss.positionY = k;
-
-                            layout[k, l] = '-';
-                        }
-                        if (tile == '_' && !player.levelComplete)
-                        {
-                            EnemyManager.runner.positionX = l;
-                            runner.positionY = k;
-                            layout[k, l] = '-';
-                        }
-                        
-
                         Console.Write(tile);
                     }
                     Console.WriteLine();
                     mapDrawn = true;
                 }
-                
-
             }
 
-            
             player.Draw();
 
-            
-            //foreach (var enemy in enemyManager.enemies)
-            //{
-            //    enemy.Draw();
-            //}
-           
+            foreach (var enemy in enemyManager.enemies)
+            {
+                enemy.Draw();
+            }
+
             Console.SetCursorPosition(0, 0);
-           
-            
         }
         public void ChangeLevel(Player player)
         {
-            //enemies.Clear();
-
-
-
             if (currentLevel == settings.MapFileName)
             {
-                 currentLevel = settings.Map2FileName;
+                currentLevel = settings.Map2FileName;
             }
             else if (currentLevel == settings.Map2FileName)
             {
@@ -231,4 +199,4 @@ namespace FirstPlayable
 
 
     }
-    }
+}
