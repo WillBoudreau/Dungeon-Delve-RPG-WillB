@@ -24,6 +24,7 @@ namespace FirstPlayable
         public int initialEnemyPositionX { get; set; }
         public int initialEnemyPositionY { get; set; }
         public string currentLevel { get; set; }
+        public int ChangeMap { get; set; }
  
         private EnemyManager enemyManager;
         private ShopManager shopManager;
@@ -34,12 +35,15 @@ namespace FirstPlayable
            this.player = player;
             this.enemyManager = enemyManager;
             this.shopManager = shopManager;
-            path = settings.RPGMaps[0];
+            path = settings.RPGMaps[ChangeMap];
             floor = File.ReadAllLines(path);
             CreateMap();
         }
 
-        
+        public void Init()
+        {
+            CreateMap();
+        }
         // creates map
         private void CreateMap()
         {
@@ -173,30 +177,31 @@ namespace FirstPlayable
         }
         public void ChangeLevel(Player player)
         {
-            if (currentLevel == settings.MapFileName)
+            Console.Clear();
+            ChangeMap++;
+            if (ChangeMap < settings.RPGMaps.Length)
             {
-                currentLevel = settings.Map2FileName;
+                path = settings.RPGMaps[ChangeMap];
+                floor = File.ReadAllLines(path);
+                enemyManager.enemies.Clear();
+                Init();
             }
-            else if (currentLevel == settings.Map2FileName)
-            {
-                currentLevel = settings.Map3FileName;
-            }
-            else if (currentLevel == settings.Map3FileName)
-            {
-                currentLevel = settings.Map4FileName;
-            }
-            else if (currentLevel == settings.Map4FileName)
+            else
             {
                 player.youWin = true;
                 player.gameOver = true;
+                return;
             }
+            UpdateMap(player);
+            initialPlayerPositionX = player.positionX;
+            initialPlayerPositionY = player.positionY;
 
             player.positionX = initialPlayerPositionX;
             player.positionY = initialPlayerPositionY;
 
+            mapDrawn = false;
             Console.Clear();
+            Console.ResetColor();
         }
-
-
     }
 }

@@ -41,8 +41,8 @@ namespace FirstPlayable
             player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, questManager, shopManager);
             questManager = new QuestManager(player, hud);
             hud = new HUD(player, map, questManager);
-            soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
-            soundPlayer.PlayLooping();
+            //soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
+            //soundPlayer.PlayLooping();
         }
         public void Init()
         {
@@ -205,6 +205,3 @@ namespace FirstPlayable
     }
 
 }
-
-
-
