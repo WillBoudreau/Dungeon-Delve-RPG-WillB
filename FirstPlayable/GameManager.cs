@@ -63,6 +63,7 @@ namespace FirstPlayable
 
         public void Update()
         {
+            Console.BackgroundColor = ConsoleColor.Black;
             map.UpdateMap(player);
             hud.UpdateLegend();
             hud.UpdateHUD();
