@@ -43,7 +43,7 @@ namespace FirstPlayable
                     Buy(player, null);
                     break;
                 case 2:
-                    LeaveShop(player,map);
+                    LeaveShop(player);
                     break;
                 default:
                     Console.WriteLine("Invalid option");
@@ -90,7 +90,9 @@ namespace FirstPlayable
                     }
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("You do not have enough gold to buy this potion");
+                        Console.ReadKey();
                     }
                     break;
                 case 3:
@@ -104,7 +106,9 @@ namespace FirstPlayable
                     }
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("You do not have enough gold to buy this potion");
+                        Console.ReadKey();
                     }
                     break;
                 default:
@@ -115,13 +119,14 @@ namespace FirstPlayable
                     break;
             }
         }
-        public override void LeaveShop(Player player,Map map)
-        {
+        public override void LeaveShop(Player player)
+        { 
             Console.Clear();
             Console.WriteLine("You have left the shop");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-            map.ChangeLevel(player);
+            map.mapDrawn = false;
+            //map.UpdateMap(player);
         }
     }
 }

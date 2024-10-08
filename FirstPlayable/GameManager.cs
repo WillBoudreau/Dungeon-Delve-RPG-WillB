@@ -36,8 +36,8 @@ namespace FirstPlayable
         public GameManager()
         {
             enemyMan = new EnemyManager();
+            map = new Map(enemyMan,player);
             shopManager = new ShopManager(map);
-            map = new Map(enemyMan, shopManager,player);
             player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, questManager, shopManager);
             questManager = new QuestManager(player, hud);
             hud = new HUD(player, map, questManager);

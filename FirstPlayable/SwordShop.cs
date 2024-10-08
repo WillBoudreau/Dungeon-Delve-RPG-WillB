@@ -20,7 +20,7 @@ namespace FirstPlayable
         {
 
         }
-        public override void LeaveShop(Player player,Map map)
+        public override void LeaveShop(Player player)
         {
 
         }

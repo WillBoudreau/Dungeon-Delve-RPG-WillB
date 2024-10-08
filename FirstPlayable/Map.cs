@@ -16,7 +16,7 @@ namespace FirstPlayable
         private string path;
         private string[] floor;
         public char[,] layout;
-        private bool mapDrawn = false;
+        public bool mapDrawn = false;
         public int mapWidth { get; set; }
         public int mapHeight { get; set; }
         public int initialPlayerPositionX { get; set; }
@@ -27,14 +27,12 @@ namespace FirstPlayable
         public int ChangeMap { get; set; }
  
         private EnemyManager enemyManager;
-        private ShopManager shopManager;
         private Player player;
         private Settings settings = new Settings();
-        public Map( EnemyManager enemyManager,ShopManager shopManager,Player player)
+        public Map( EnemyManager enemyManager,Player player)
         {
            this.player = player;
             this.enemyManager = enemyManager;
-            this.shopManager = shopManager;
             path = settings.RPGMaps[ChangeMap];
             floor = File.ReadAllLines(path);
             CreateMap();
@@ -88,10 +86,6 @@ namespace FirstPlayable
                         layout[i, j] = '-';
                         var boss = new Boss(settings.BossInitialHealth, settings.BossInitialDamage, j, i, "Boss", layout);
                         enemyManager.enemies.Add(boss);
-                    }
-                    else if (layout[i,j] == 'S')
-                    {
-                        shopManager.SpawnShop('S',this);
                     }
                 }
             }
@@ -165,8 +159,10 @@ namespace FirstPlayable
                         Console.Write(tile);
                     }
                     Console.WriteLine();
+
                     mapDrawn = true;
                 }
+                    Console.BackgroundColor = ConsoleColor.Black;
             }
 
             player.Draw();

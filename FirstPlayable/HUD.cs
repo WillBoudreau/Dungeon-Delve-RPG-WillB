@@ -29,6 +29,7 @@ namespace FirstPlayable
             Console.WriteLine($"Player Health: {player.healthSystem.GetCurrentHealth()}/{player.healthSystem.GetMaximumHealth()} | Collected Seeds: {player.currentSeeds}| Kill Count: {player.KillCount} | Attacking: {currentEnemyInfo}");
             RedrawLiveLog();
             UpdateQuestLog();
+            Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void UpdateLegend()
