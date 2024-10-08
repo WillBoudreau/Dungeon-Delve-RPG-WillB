@@ -9,9 +9,14 @@ namespace FirstPlayable
 {
     internal class PotionShop : Shop
     {
-        public PotionShop()
+        Map map;
+        public PotionShop(Map map)
         {
-
+            this.map = map;
+            if(map == null)
+            {
+                Debug.WriteLine("Map is null");
+            }
         }
         public override void EnterShop(Player player)
         {
@@ -38,7 +43,7 @@ namespace FirstPlayable
                     Buy(player, null);
                     break;
                 case 2:
-                    LeaveShop(player);
+                    LeaveShop(player,map);
                     break;
                 default:
                     Console.WriteLine("Invalid option");
@@ -69,7 +74,9 @@ namespace FirstPlayable
                     }
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("You do not have enough gold to buy this potion");
+                        Console.ReadKey();
                     }
                     break;
                 case 2:
@@ -101,13 +108,20 @@ namespace FirstPlayable
                     }
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Invalid option");
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadKey();
                     break;
             }
         }
-        public override void LeaveShop(Player player)
+        public override void LeaveShop(Player player,Map map)
         {
+            Console.Clear();
             Console.WriteLine("You have left the shop");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            map.ChangeLevel(player);
         }
     }
 }

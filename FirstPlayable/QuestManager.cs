@@ -24,7 +24,7 @@ namespace FirstPlayable
         public void Init()
         {
             QuestKillEnemies questKillEnemies = new QuestKillEnemies(numofKills,player);
-            QuestCollectItems questCollectItems = new QuestCollectItems(30,player);
+            QuestCollectItems questCollectItems = new QuestCollectItems(15,player);
             FinalQuest finalQuest = new FinalQuest();
             AddQuest(questKillEnemies);
             AddQuest(questCollectItems);

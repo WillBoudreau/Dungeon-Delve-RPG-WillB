@@ -8,8 +8,9 @@ namespace FirstPlayable
 {
     internal abstract class Shop
     {
+        
         public abstract void EnterShop(Player player);
         public abstract void Buy(Player player,Item item);
-        public abstract void LeaveShop(Player player);
+        public abstract void LeaveShop(Player player,Map map);
     }
 }

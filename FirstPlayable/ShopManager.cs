@@ -9,11 +9,12 @@ namespace FirstPlayable
     internal class ShopManager
     {
         private List<Shop> Shops;
-
-        public ShopManager()
+        Map map;
+        public ShopManager(Map map)
         {
+            this.map = map;
             Shops = new List<Shop>();
-            Shops.Add(new PotionShop());
+            Shops.Add(new PotionShop(map));
         }
 
         public void Init(Map map)
@@ -50,7 +51,7 @@ namespace FirstPlayable
                 {
                     if (map.layout[i,j] == tile)
                     {
-                        shop = new PotionShop();
+                        shop = new PotionShop(map);
                         return shop;
                     }
                 }
