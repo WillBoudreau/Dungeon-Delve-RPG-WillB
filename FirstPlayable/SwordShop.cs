@@ -69,12 +69,14 @@ namespace FirstPlayable
                         player.playerDamage += 5;
                         Console.WriteLine("You bought a Wooden Sword!");
                         Console.WriteLine("Your attack increased by 5");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+
                     }
                     else
                     {
                         Console.Clear();
                         Console.WriteLine("You don't have enough seeds");
-                        Introduction(player);
                     }
                     break;
                 case 2:
@@ -84,12 +86,13 @@ namespace FirstPlayable
                         player.playerDamage += 10;
                         Console.WriteLine("You bought an Iron Sword!");
                         Console.WriteLine("Your attack increased by 10");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     else
                     {
                         Console.Clear();
                         Console.WriteLine("You don't have enough seeds");
-                        Introduction(player);
                     }
                     break;
                 case 3:
@@ -99,12 +102,13 @@ namespace FirstPlayable
                         player.playerDamage += 15;
                         Console.WriteLine("You bought a Steel Sword!");
                         Console.WriteLine("Your attack increased by 15");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     else
                     {
                         Console.Clear();
                         Console.WriteLine("You don't have enough seeds");
-                        Introduction(player);
                     }
                     break;
                 default:
@@ -112,6 +116,7 @@ namespace FirstPlayable
                     Introduction(player);
                     break;
             }
+            Introduction(player);
         }
         public override void LeaveShop(Player player)
         {

@@ -69,15 +69,14 @@ namespace FirstPlayable
                         player.currentSeeds -= 1;
                         player.healthSystem.currentHealth += 1;
                         Console.WriteLine("You have bought a potion for 10 gold");
-                        Console.WriteLine("You now have " + player.currentSeeds + " gold");
                         Console.WriteLine("You now have " + player.healthSystem.currentHealth + " health");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     else
                     {
                         Console.Clear();
-                        Console.WriteLine("You do not have enough gold to buy this potion");
-                        Introduction(player);
-                    }
+                        Console.WriteLine("You do not have enough gold to buy this potion");                    }
                     break;
                 case 2:
                     if (player.currentSeeds >= 5)
@@ -85,14 +84,14 @@ namespace FirstPlayable
                         player.currentSeeds -= 5;
                         player.healthSystem.currentHealth += 5;
                         Console.WriteLine("You have bought a potion for 20 gold");
-                        Console.WriteLine("You now have " + player.currentSeeds + " gold");
                         Console.WriteLine("You now have " + player.healthSystem.currentHealth + " health");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     else
                     {
                         Console.Clear();
                         Console.WriteLine("You do not have enough gold to buy this potion");
-                        Introduction(player);
                     }
                     break;
                 case 3:
@@ -101,14 +100,14 @@ namespace FirstPlayable
                         player.currentSeeds -= 10;
                         player.healthSystem.currentHealth += 10;
                         Console.WriteLine("You have bought a potion for 30 gold");
-                        Console.WriteLine("You now have " + player.currentSeeds + " gold");
                         Console.WriteLine("You now have " + player.healthSystem.currentHealth+ " health");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     else
                     {
                         Console.Clear();
                         Console.WriteLine("You do not have enough gold to buy this potion");
-                        Introduction(player);
                     }
                     break;
                 default:
@@ -118,6 +117,7 @@ namespace FirstPlayable
                     Introduction(player);
                     break;
             }
+            Introduction(player);
         }
         public override void LeaveShop(Player player)
         { 

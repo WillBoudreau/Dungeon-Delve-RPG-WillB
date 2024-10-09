@@ -72,7 +72,6 @@ namespace FirstPlayable
                         Console.WriteLine("You do not have enough seeds to buy this item");
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
-                        Introduction(player);
                     }
                     break;
                 case 2:
@@ -90,7 +89,6 @@ namespace FirstPlayable
                         Console.WriteLine("You do not have enough seeds to buy this item");
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
-                        Introduction(player);
                     }
                     break;
                 case 3:
@@ -108,14 +106,13 @@ namespace FirstPlayable
                         Console.WriteLine("You do not have enough seeds to buy this item");
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
-                        Introduction(player);
                     }
                     break;
                 default:
                     Console.WriteLine("Invalid option");
                     break;
             }
-
+            Introduction(player);
         }
         public override void LeaveShop(Player player)
         {
