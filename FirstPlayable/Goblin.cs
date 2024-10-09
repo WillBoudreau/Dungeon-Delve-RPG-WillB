@@ -25,8 +25,8 @@ namespace FirstPlayable
         {
             if (enemyAlive == true)
             {
-                Console.SetCursorPosition(positionX, positionY);
                 Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(positionX, positionY);
                 Console.Write(icon);
                 Console.ResetColor();
             }
@@ -54,7 +54,9 @@ namespace FirstPlayable
                 int rollResult = randomRoll.Next(1, 5);
                 while ((enemyMovementX == playerX && enemyMovementY == playerY) ||
                        (enemyMovementX == newEnemyPositionX && enemyMovementY == newEnemyPositionY) ||
-                       mapLayout[enemyMovementY, enemyMovementX] == '#')
+                       mapLayout[enemyMovementY, enemyMovementX] == '#' || mapLayout[enemyMovementY,enemyMovementX] == 'S' 
+                       || mapLayout[enemyMovementY, enemyMovementX] == 'P' || 
+                       mapLayout[enemyMovementY, enemyMovementX] == 'U')
                 {
 
                     // retries the role

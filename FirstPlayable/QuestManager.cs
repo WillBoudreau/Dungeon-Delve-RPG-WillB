@@ -13,6 +13,7 @@ namespace FirstPlayable
         private List<Quest> activeQuests;
         private List<Quest> completedQuests;
         public int numofKills;
+        private int numofItems;
         public QuestManager(Player player,HUD hud)
         {
             this.player = player;
@@ -20,11 +21,12 @@ namespace FirstPlayable
             activeQuests = new List<Quest>();
             completedQuests = new List<Quest>();
             numofKills = 5;
+            numofItems = 15;
         }
         public void Init()
         {
             QuestKillEnemies questKillEnemies = new QuestKillEnemies(numofKills,player);
-            QuestCollectItems questCollectItems = new QuestCollectItems(15,player);
+            QuestCollectItems questCollectItems = new QuestCollectItems(numofItems,player);
             FinalQuest finalQuest = new FinalQuest();
             AddQuest(questKillEnemies);
             AddQuest(questCollectItems);

@@ -112,6 +112,7 @@ namespace FirstPlayable
                     Console.WriteLine("Invalid option");
                     break;
             }
+            Console.Clear();
             Introduction(player);
         }
         public override void LeaveShop(Player player)

@@ -25,8 +25,8 @@ namespace FirstPlayable
         {
             if (enemyAlive == true)
             {
-                Console.SetCursorPosition(positionX, positionY);
                 Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.SetCursorPosition(positionX, positionY);
                 Console.Write(icon);
                 Console.ResetColor();
             }

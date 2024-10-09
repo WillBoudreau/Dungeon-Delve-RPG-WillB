@@ -117,6 +117,7 @@ namespace FirstPlayable
                     Introduction(player);
                     break;
             }
+            Console.Clear();
             Introduction(player);
         }
         public override void LeaveShop(Player player)

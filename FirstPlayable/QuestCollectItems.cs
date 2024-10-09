@@ -9,6 +9,7 @@ namespace FirstPlayable
     internal class QuestCollectItems : Quest
     {
         public int itemsToCollect;
+        public int ItemCollected;
         Player player;
         public QuestCollectItems(int itemsToCollect, Player player)
         {
@@ -38,7 +39,8 @@ namespace FirstPlayable
         }
         public override string Progress()
         {
-            return $"Collect {player.currentSeeds} / {itemsToCollect} seeds";
+            ItemCollected = player.currentSeeds;
+            return $"Collect {ItemCollected} / {itemsToCollect} seeds";
         }
     }
 }

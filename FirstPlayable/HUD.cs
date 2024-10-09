@@ -94,6 +94,7 @@ namespace FirstPlayable
             foreach (var quest in quests)
             {
                 Console.WriteLine(quest.Progress());
+                Console.WriteLine(" ");
             }
         }
     }

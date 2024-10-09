@@ -170,14 +170,6 @@ namespace FirstPlayable
                 }
                     Console.BackgroundColor = ConsoleColor.Black;
             }
-
-            player.Draw();
-
-            foreach (var enemy in enemyManager.enemies)
-            {
-                enemy.Draw();
-            }
-
             Console.SetCursorPosition(0, 0);
         }
         public void ChangeLevel(Player player)

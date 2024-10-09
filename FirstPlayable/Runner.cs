@@ -42,7 +42,7 @@ namespace FirstPlayable
             int newEnemyPositionY = positionY;
             
 
-            if (mapLayout[newEnemyPositionY, newEnemyPositionX] != '#')
+            if (mapLayout[newEnemyPositionY, newEnemyPositionX] != '#' || mapLayout[newEnemyPositionX,newEnemyPositionY] != 'S' || mapLayout[newEnemyPositionX,newEnemyPositionY] != 'P'|| mapLayout[newEnemyPositionX,newEnemyPositionY] != 'U')
             {
 
                 Console.SetCursorPosition(positionX, positionY);

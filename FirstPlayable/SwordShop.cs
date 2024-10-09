@@ -77,6 +77,8 @@ namespace FirstPlayable
                     {
                         Console.Clear();
                         Console.WriteLine("You don't have enough seeds");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     break;
                 case 2:
@@ -93,6 +95,8 @@ namespace FirstPlayable
                     {
                         Console.Clear();
                         Console.WriteLine("You don't have enough seeds");
+                        Console.WriteLine("Press any key to continue"); 
+                        Console.ReadKey();
                     }
                     break;
                 case 3:
@@ -109,6 +113,8 @@ namespace FirstPlayable
                     {
                         Console.Clear();
                         Console.WriteLine("You don't have enough seeds");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     break;
                 default:
@@ -116,6 +122,7 @@ namespace FirstPlayable
                     Introduction(player);
                     break;
             }
+            Console.Clear();
             Introduction(player);
         }
         public override void LeaveShop(Player player)
