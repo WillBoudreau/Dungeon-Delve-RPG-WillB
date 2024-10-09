@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoostShop.cs" />
     <Compile Include="Boss.cs" />
     <Compile Include="DamageBoost.cs" />
     <Compile Include="Enemy.cs" />

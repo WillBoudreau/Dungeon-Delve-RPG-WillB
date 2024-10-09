@@ -141,7 +141,13 @@ namespace FirstPlayable
                                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                                 break;
                             case 'S':
-                                Console.ForegroundColor = ConsoleColor.Blue;
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                break;
+                            case 'P':
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                break;
+                            case 'U':
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 break;
                             default:
                                 Console.ForegroundColor = ConsoleColor.Gray;

@@ -232,7 +232,18 @@ namespace FirstPlayable
                 }
                 if (map.layout[movementY, movementX] == 'S')
                 {
-                    shopManager.EnterShop(this);
+                    shopManager.EnterShop(this,"S");
+                    return;
+                }
+                if (map.layout[movementY, movementX] == 'P')
+                {
+                    shopManager.EnterShop(this,"P");
+                    return;
+                }
+                if (map.layout[movementY, movementX] == 'U')
+                {
+                    shopManager.EnterShop(this,"U");
+                    return;
                 }
 
 

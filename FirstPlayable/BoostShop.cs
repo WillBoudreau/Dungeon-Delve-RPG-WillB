@@ -3,31 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace FirstPlayable
 {
-    internal class SwordShop:Shop
+    internal class BoostShop:Shop
     {
         Map map;
-        public SwordShop(Map map)
+        Seed seed = new Seed();
+        public BoostShop(Map map)
         {
             this.map = map;
-            if(map == null)
-            {
-                Debug.WriteLine("Map is null");
-            }
         }
         public override void EnterShop(Player player)
         {
             Console.Clear();
-            Debug.WriteLine("Entered Sword Shop");
             Introduction(player);
         }
         void Introduction(Player player)
         {
-            Console.WriteLine("Welcome to the Sword Shop!");
-            Console.WriteLine("Here you can buy swords to increase your attack");
+            Console.WriteLine("Welcome to the Boost Shop!");
+            Console.WriteLine("Here you can buy boosts to increase your stats");
             Console.WriteLine("What would you like to do?");
             Console.WriteLine(" ");
             Console.WriteLine("1. Buy");
@@ -52,11 +47,11 @@ namespace FirstPlayable
         }
         void DisplayItems()
         {
-            Console.WriteLine("1. Wooden Sword - 5 seeds");
-            Console.WriteLine("2. Iron Sword - 10 seeds");
-            Console.WriteLine("3. Steel Sword - 15 seeds");
+            Console.WriteLine("1. Health Boost - 5 seeds");
+            Console.WriteLine("2. Attack Boost - 10 seeds");
+            Console.WriteLine("3. Gold Boost - 15 seeds");
         }
-        public override void Buy(Player player,Item item)
+        public override void Buy(Player player, Item item)
         {
             Console.WriteLine("Enter the number of the item you want to buy:");
             int option = Convert.ToInt32(Console.ReadLine());
@@ -66,14 +61,17 @@ namespace FirstPlayable
                     if (player.currentSeeds >= 5)
                     {
                         player.currentSeeds -= 5;
-                        player.playerDamage += 5;
-                        Console.WriteLine("You bought a Wooden Sword!");
-                        Console.WriteLine("Your attack increased by 5");
+                        player.healthSystem.maximumHealth += 10;
+                        Console.WriteLine("You have bought a Health Boost");
+                        Console.WriteLine("Your max health has increased by 10");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     else
                     {
-                        Console.Clear();
-                        Console.WriteLine("You don't have enough seeds");
+                        Console.WriteLine("You do not have enough seeds to buy this item");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                         Introduction(player);
                     }
                     break;
@@ -81,14 +79,17 @@ namespace FirstPlayable
                     if (player.currentSeeds >= 10)
                     {
                         player.currentSeeds -= 10;
-                        player.playerDamage += 10;
-                        Console.WriteLine("You bought an Iron Sword!");
-                        Console.WriteLine("Your attack increased by 10");
+                        player.playerDamage += 5;
+                        Console.WriteLine("You have bought an Attack Boost");
+                        Console.WriteLine("Your attack has increased by 5");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     else
                     {
-                        Console.Clear();
-                        Console.WriteLine("You don't have enough seeds");
+                        Console.WriteLine("You do not have enough seeds to buy this item");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                         Introduction(player);
                     }
                     break;
@@ -96,22 +97,25 @@ namespace FirstPlayable
                     if (player.currentSeeds >= 15)
                     {
                         player.currentSeeds -= 15;
-                        player.playerDamage += 15;
-                        Console.WriteLine("You bought a Steel Sword!");
-                        Console.WriteLine("Your attack increased by 15");
+                        seed.SeedMultiplier += 2;
+                        Console.WriteLine("You have bought a Gold Boost");
+                        Console.WriteLine("Your gold has increased by 5");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     else
                     {
-                        Console.Clear();
-                        Console.WriteLine("You don't have enough seeds");
+                        Console.WriteLine("You do not have enough seeds to buy this item");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                         Introduction(player);
                     }
                     break;
                 default:
                     Console.WriteLine("Invalid option");
-                    Introduction(player);
                     break;
             }
+
         }
         public override void LeaveShop(Player player)
         {

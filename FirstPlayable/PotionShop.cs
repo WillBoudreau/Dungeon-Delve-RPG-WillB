@@ -19,10 +19,10 @@ namespace FirstPlayable
             }
         }
         public override void EnterShop(Player player)
-        {
-            Console.Clear();
-            Debug.WriteLine("Entered Potion Shop");
-            Introduction(player);
+        {   
+                Console.Clear();
+                Debug.WriteLine("Entered Potion Shop");
+                Introduction(player);
         }
         public void Introduction(Player player)
         {
@@ -76,7 +76,7 @@ namespace FirstPlayable
                     {
                         Console.Clear();
                         Console.WriteLine("You do not have enough gold to buy this potion");
-                        Console.ReadKey();
+                        Introduction(player);
                     }
                     break;
                 case 2:
@@ -92,7 +92,7 @@ namespace FirstPlayable
                     {
                         Console.Clear();
                         Console.WriteLine("You do not have enough gold to buy this potion");
-                        Console.ReadKey();
+                        Introduction(player);
                     }
                     break;
                 case 3:
@@ -108,14 +108,14 @@ namespace FirstPlayable
                     {
                         Console.Clear();
                         Console.WriteLine("You do not have enough gold to buy this potion");
-                        Console.ReadKey();
+                        Introduction(player);
                     }
                     break;
                 default:
                     Console.Clear();
                     Console.WriteLine("Invalid option");
                     Console.WriteLine("Press any key to continue");
-                    Console.ReadKey();
+                    Introduction(player);
                     break;
             }
         }
@@ -126,7 +126,6 @@ namespace FirstPlayable
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
             map.mapDrawn = false;
-            //map.UpdateMap(player);
         }
     }
 }
