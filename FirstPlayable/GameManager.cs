@@ -26,13 +26,6 @@ namespace FirstPlayable
         private EnemyManager enemyMan;
         private HUD hud;
         public SoundPlayer soundPlayer;
-        public string CurrentLevel { get; set; }
-
-
-        //public string currentLevel { get; set; }
-
-
-        bool IsShopping = false;
         public GameManager()
         {
             enemyMan = new EnemyManager();
@@ -48,6 +41,7 @@ namespace FirstPlayable
         {
             questManager.Init();
             shopManager.Init(map);
+            //map.Init();
         }
         
         /// <summary>
@@ -73,8 +67,8 @@ namespace FirstPlayable
 
         public void Draw()
         {
-            GameDisplay();
             enemyMan.Draw();
+            GameDisplay();
             player.Draw();
         }
 

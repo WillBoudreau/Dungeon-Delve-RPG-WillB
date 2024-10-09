@@ -168,7 +168,7 @@ namespace FirstPlayable
 
                     mapDrawn = true;
                 }
-                    Console.BackgroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.Black;
             }
             Console.SetCursorPosition(0, 0);
         }
