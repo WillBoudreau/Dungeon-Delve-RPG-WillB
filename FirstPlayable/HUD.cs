@@ -88,14 +88,34 @@ namespace FirstPlayable
         }
         public void UpdateQuestLog()
         {
-            List<string> questProgressMessages = new List<string>();
+            int questLogStart = map.mapHeight + 13;
+            Console.SetCursorPosition(0, questLogStart);
+            ClearQuestLog(questLogStart);
             DrawQuestLog();
+
+            List<string> questProgressMessages = new List<string>();
             var quests = questManager.GetActiveQuests();
             foreach (var quest in quests)
             {
                 questProgressMessages.Add(quest.Progress());
             }
-            Console.WriteLine(string.Join("\n", questProgressMessages));
+            for(int i = 0; i < questProgressMessages.Count; i++)
+            {
+                Console.SetCursorPosition(0, questLogStart + i);
+                Console.Write(new string (' ', Console.WindowWidth));
+                Console.SetCursorPosition(0, questLogStart + i);
+                Console.WriteLine(questProgressMessages[i]);
+            }
+            //Console.WriteLine(string.Join("\n", questProgressMessages));
+        }
+        public void ClearQuestLog(int questLogStart)
+        {
+            int maxQuests = 3;
+            for (int i = 0; i < maxQuests; i++)
+            {
+                Console.SetCursorPosition(0, questLogStart + i);
+                Console.Write(new string(' ', Console.WindowWidth));
+            }
         }
     }
 }
