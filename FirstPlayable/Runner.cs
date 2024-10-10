@@ -32,10 +32,6 @@ namespace FirstPlayable
                 Console.Write(icon);
                 Console.ResetColor();
             }
-            else
-            {
-
-            }
         }
 
 
@@ -61,7 +57,6 @@ namespace FirstPlayable
 
                 currentTile = mapLayout[newEnemyPositionY, newEnemyPositionX];
             }
-
 
             int distanceX = Math.Abs(playerX - positionX);
             int distanceY = Math.Abs(playerY - positionY);
@@ -132,17 +127,17 @@ namespace FirstPlayable
                 Console.SetCursorPosition(positionX, positionY);
                 Console.Write(icon);
             }
-
-            if (!enemyAlive)
+            else if (!enemyAlive)
             {
-               
                 // Update the map layout and the console when the enemy dies
                 mapLayout[oldPositionY, oldPositionX] = '#';
+                Console.SetCursorPosition(oldPositionX, oldPositionY);
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.SetCursorPosition(positionX, positionY);
                 Console.BackgroundColor = ConsoleColor.DarkGray; // Set the background color to dark gray
+                Console.SetCursorPosition(positionX, positionY);
                 Console.Write(currentTile); 
             }
+
         }
     }
 }

@@ -140,16 +140,21 @@ namespace FirstPlayable
                         {
                             gameOver = true;
                         }
-                        
-                        
-                        
                         if (enemy.healthSystem.IsDead())
                         {
-                            KillCount++;
+                           KillCount++;
                            enemy.enemyAlive = false;
+
+                            map.layout[enemy.positionY, enemy.positionX] = '-';
+
+                            Console.SetCursorPosition(enemy.positionX, enemy.positionY);
+                            Console.BackgroundColor = ConsoleColor.DarkGray;
+                            Console.Write('-');
 
                             enemy.positionX = 0;
                             enemy.positionY = 0;
+
+
 
                             UpdateLiveLog($"You Killed The {enemy.Name}");
 
