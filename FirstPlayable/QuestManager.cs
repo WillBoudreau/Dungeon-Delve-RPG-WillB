@@ -20,7 +20,7 @@ namespace FirstPlayable
             this.hud = hud;
             activeQuests = new List<Quest>();
             completedQuests = new List<Quest>();
-            numofKills = 1;
+            numofKills = 5;
             numofItems = 15;
         }
         public void Init()
