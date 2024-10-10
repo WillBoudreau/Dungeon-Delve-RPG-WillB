@@ -254,7 +254,6 @@ namespace FirstPlayable
                     map.layout[movementY, movementX] = '-';
                     Console.ForegroundColor = ConsoleColor.Gray;
                     itemManager.UseItem("Seed");
-                    
 
 
                     

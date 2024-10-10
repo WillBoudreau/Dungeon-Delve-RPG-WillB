@@ -20,7 +20,6 @@ namespace FirstPlayable
             if (player.KillCount >= enemiesToKill)
             {
                 IsCurrent = false;
-                Console.WriteLine("Quest Complete: You have killed all " + enemiesToKill + " enemies");
             }
             if(hud != null)
             {

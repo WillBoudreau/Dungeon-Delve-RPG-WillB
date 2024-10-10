@@ -41,7 +41,6 @@ namespace FirstPlayable
         {
             questManager.Init();
             shopManager.Init(map);
-            //map.Init();
         }
         
         /// <summary>
@@ -67,9 +66,9 @@ namespace FirstPlayable
 
         public void Draw()
         {
+            player.Draw();
             enemyMan.Draw();
             GameDisplay();
-            player.Draw();
         }
 
         // Start up
@@ -172,7 +171,6 @@ namespace FirstPlayable
         private void StartLevel()
         {
             levelTimer.Start(); // Timer will start at beginning of level
-            
         }
 
         private void EndLevel()
@@ -189,7 +187,6 @@ namespace FirstPlayable
         private void GameDisplay()
         {
             player.PlayerInput(map, enemyMan.enemies);
-           
         }
             
             

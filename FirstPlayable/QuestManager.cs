@@ -20,7 +20,7 @@ namespace FirstPlayable
             this.hud = hud;
             activeQuests = new List<Quest>();
             completedQuests = new List<Quest>();
-            numofKills = 5;
+            numofKills = 1;
             numofItems = 15;
         }
         public void Init()
@@ -49,6 +49,7 @@ namespace FirstPlayable
                 completedQuests.Add(quest);
                 quest.Complete(hud,player);  
             }
+
         }
         public void CheckQuestProgress()
         {

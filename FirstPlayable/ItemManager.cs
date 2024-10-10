@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace FirstPlayable
 {
     internal class ItemManager
     {
         private Player player;
-
-
-        
         public Dictionary<string, Item> Items { get; set; }
 
         public ItemManager(Player player)
@@ -21,9 +19,6 @@ namespace FirstPlayable
             { "Seed", new Seed() }
         };
         }
-
-
-
         public void UseItem(string itemName)
         {
             if (Items.ContainsKey(itemName))

@@ -88,14 +88,14 @@ namespace FirstPlayable
         }
         public void UpdateQuestLog()
         {
+            List<string> questProgressMessages = new List<string>();
             DrawQuestLog();
             var quests = questManager.GetActiveQuests();
-            Console.WriteLine(quests.Count);
             foreach (var quest in quests)
             {
-                Console.WriteLine(quest.Progress());
-                Console.WriteLine(" ");
+                questProgressMessages.Add(quest.Progress());
             }
+            Console.WriteLine(string.Join("\n", questProgressMessages));
         }
     }
 }
