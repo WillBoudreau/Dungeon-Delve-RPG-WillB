@@ -25,6 +25,7 @@ namespace FirstPlayable
         
         // Seeds
         public int currentSeeds { get; set; }
+        public int SeedsCollected { get; set; }
         
         // Game States
         public bool youWin { get; set; }
@@ -245,7 +246,8 @@ namespace FirstPlayable
                 // collectable seeds
                 if (map.layout[movementY, movementX] == '&')
                 {
-                   
+                   SeedsCollected++;
+
                     map.layout[movementY, movementX] = '-';
                     Console.ForegroundColor = ConsoleColor.Gray;
                     itemManager.UseItem("Seed");
