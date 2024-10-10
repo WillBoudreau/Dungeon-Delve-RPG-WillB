@@ -19,6 +19,7 @@ namespace FirstPlayable
         }
         public override void Complete(HUD hud, Player player)
         {
+            //Quest is completed
             if (player.currentSeeds >= itemsToCollect)
             {
                 IsCurrent = false;
@@ -31,6 +32,7 @@ namespace FirstPlayable
         }
         public override void Started(HUD hud)
         {
+            //Quest is started
             IsCurrent = true;
             Console.WriteLine("Quest Started: Collect " + itemsToCollect + " seeds");
             if (hud != null)
@@ -40,6 +42,8 @@ namespace FirstPlayable
         }
         public override string Progress()
         {
+            //Progress is updated in the HUD
+            //If the player has more seeds than the last time the progress was checked, update the ItemCollected
             if(player.currentSeeds > ItemCollected)
             {
                 ItemCollected = player.currentSeeds;

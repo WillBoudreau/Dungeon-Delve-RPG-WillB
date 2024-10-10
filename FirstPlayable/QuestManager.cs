@@ -25,6 +25,7 @@ namespace FirstPlayable
         }
         public void Init()
         {
+            //Initializes the quests
             QuestKillEnemies questKillEnemies = new QuestKillEnemies(numofKills,player);
             QuestCollectItems questCollectItems = new QuestCollectItems(numofItems,player);
             FinalQuest finalQuest = new FinalQuest();
@@ -34,15 +35,18 @@ namespace FirstPlayable
         }
         public void Update()
         {
+            //Checks the progress of the quests
             CheckQuestProgress();
         }
         public void AddQuest(Quest quest)
-        { 
+        {
+            //Adds a quest to the active quests
             activeQuests.Add(quest);
             quest.Started(hud);
         }
         public void CompleteQuest(Quest quest)
         {
+            //Completes a quest
             if(activeQuests.Contains(quest))
             {
                 activeQuests.Remove(quest);
@@ -53,6 +57,7 @@ namespace FirstPlayable
         }
         public void CheckQuestProgress()
         {
+            //Checks the progress of the quests
             List<Quest> questsToComplete = new List<Quest>();
             foreach(Quest quest in activeQuests)
             {
@@ -73,12 +78,14 @@ namespace FirstPlayable
             }
             foreach(Quest quest in questsToComplete)
             {
+                //Completes the quests
                 CompleteQuest(quest);
             }
         }
 
         public List<Quest> GetActiveQuests()
         {
+            //Returns the active quests
             return activeQuests;
         }
     }

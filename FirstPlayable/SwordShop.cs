@@ -20,12 +20,14 @@ namespace FirstPlayable
         }
         public override void EnterShop(Player player)
         {
+            //Enter the shop
             Console.Clear();
             Debug.WriteLine("Entered Sword Shop");
             Introduction(player);
         }
         void Introduction(Player player)
         {
+            //Introduction to the shop
             Console.WriteLine("Welcome to the Sword Shop!");
             Console.WriteLine("Here you can buy swords to increase your attack");
             Console.WriteLine("What would you like to do?");
@@ -52,12 +54,14 @@ namespace FirstPlayable
         }
         void DisplayItems()
         {
+            //Display items available in the shop
             Console.WriteLine("1. Wooden Sword - 5 seeds");
             Console.WriteLine("2. Iron Sword - 10 seeds");
             Console.WriteLine("3. Steel Sword - 15 seeds");
         }
         public override void Buy(Player player,Item item)
         {
+            //Buy items from the shop
             Console.WriteLine("Enter the number of the item you want to buy:");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
@@ -65,6 +69,7 @@ namespace FirstPlayable
                 case 1:
                     if (player.currentSeeds >= 5)
                     {
+                        //Buy Wooden Sword
                         player.currentSeeds -= 5;
                         player.playerDamage += 5;
                         Console.WriteLine("You bought a Wooden Sword!");
@@ -75,6 +80,7 @@ namespace FirstPlayable
                     }
                     else
                     {
+                        //Not enough seeds
                         Console.Clear();
                         Console.WriteLine("You don't have enough seeds");
                         Console.WriteLine("Press any key to continue");
@@ -123,10 +129,12 @@ namespace FirstPlayable
                     break;
             }
             Console.Clear();
+            //Return to the shop
             Introduction(player);
         }
         public override void LeaveShop(Player player)
         {
+            //Leave the shop
             Console.Clear();
             Console.WriteLine("You have left the shop");
             Console.WriteLine("Press any key to continue");

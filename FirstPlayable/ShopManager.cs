@@ -23,6 +23,7 @@ namespace FirstPlayable
 
         public void Init(Map map)
         {
+            //Initializes the shops
             for (int i = 0; i< map.layout.GetLength(0); i++)
             {
                 for (int j = 0; j < map.layout.GetLength(1); j++)
@@ -44,9 +45,7 @@ namespace FirstPlayable
         }
         public void EnterShop(Player player,string ShopType)
         {
-            Debug.WriteLine(Shops[1]);
-            Debug.WriteLine(Shops[0]);
-            Debug.WriteLine(Shops[2]);
+            //Enter the shop
             if(ShopType == "P")
             {
                 Shops[0].EnterShop(player);
@@ -62,12 +61,12 @@ namespace FirstPlayable
         }
         public void SpawnShop(char tile,Map map,int x,int y)
         {
+            //Spawns a shop
             if (IsValidTile(tile))
             {
                 Shop shop = CreateShop(tile, map);
                 if(shop != null)
                 {
-                    shop.SetPos(x,y);
                     Shops.Add(shop);
                 }
             }
@@ -75,11 +74,13 @@ namespace FirstPlayable
 
         private bool IsValidTile(char tile)
         {
+            //Checks if the tile is a valid shop tile
             return tile == 'S'|| tile == 'P' || tile =='U';
         }
 
         private Shop CreateShop(char tile, Map map)
         {
+            //Creates a shop
             switch(tile)
             {
                 case 'S':

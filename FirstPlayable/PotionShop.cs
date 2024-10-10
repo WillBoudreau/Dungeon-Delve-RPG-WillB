@@ -20,12 +20,14 @@ namespace FirstPlayable
         }
         public override void EnterShop(Player player)
         {   
+            //Enter the shop
                 Console.Clear();
                 Debug.WriteLine("Entered Potion Shop");
                 Introduction(player);
         }
         public void Introduction(Player player)
         {
+            //Introduction to the shop
             Console.WriteLine("Welcome to the Potion Shop!");
             Console.WriteLine("Here you can buy potions to heal yourself");
             Console.WriteLine("What would you like to do?");
@@ -52,6 +54,7 @@ namespace FirstPlayable
         }
         void DisplayItems()
         {
+            //Display items available in the shop
             Console.WriteLine("1. Small Potion - 1 gold");
             Console.WriteLine("2. Medium Potion - 5 gold");
             Console.WriteLine("3. Large Potion - 10 gold");
@@ -66,6 +69,7 @@ namespace FirstPlayable
                 case 1:
                     if (player.currentSeeds >= 1)
                     {
+                        //Buy Small Potion
                         player.currentSeeds -= 1;
                         player.healthSystem.currentHealth += 1;
                         Console.WriteLine("You have bought a potion for 10 gold");
@@ -75,8 +79,12 @@ namespace FirstPlayable
                     }
                     else
                     {
+                        //Not enough gold
                         Console.Clear();
-                        Console.WriteLine("You do not have enough gold to buy this potion");                    }
+                        Console.WriteLine("You do not have enough gold to buy this potion");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                    }
                     break;
                 case 2:
                     if (player.currentSeeds >= 5)
@@ -92,6 +100,8 @@ namespace FirstPlayable
                     {
                         Console.Clear();
                         Console.WriteLine("You do not have enough gold to buy this potion");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     break;
                 case 3:
@@ -108,6 +118,8 @@ namespace FirstPlayable
                     {
                         Console.Clear();
                         Console.WriteLine("You do not have enough gold to buy this potion");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                     break;
                 default:
@@ -118,10 +130,12 @@ namespace FirstPlayable
                     break;
             }
             Console.Clear();
+            //Return to the shop
             Introduction(player);
         }
         public override void LeaveShop(Player player)
         { 
+            //Leave the shop
             Console.Clear();
             Console.WriteLine("You have left the shop");
             Console.WriteLine("Press any key to continue");

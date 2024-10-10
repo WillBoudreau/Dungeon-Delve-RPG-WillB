@@ -17,6 +17,7 @@ namespace FirstPlayable
         }
         public override void Complete(HUD hud,Player player)
         {
+            //Quest is completed
             if (player.KillCount >= enemiesToKill)
             {
                 IsCurrent = false;
@@ -28,6 +29,7 @@ namespace FirstPlayable
         }
         public override void Started(HUD hud)
         {
+            //Quest is started
             IsCurrent = true;
             Console.WriteLine("Quest Started: Kill " + enemiesToKill + " enemies");
             if( hud != null )
@@ -37,6 +39,7 @@ namespace FirstPlayable
         }
         public override string Progress()
         {
+            //Progress is updated in the HUD
             return $"Kill {player.KillCount} / {enemiesToKill} enemies";
         }
     }

@@ -8,20 +8,12 @@ namespace FirstPlayable
 {
     internal abstract class Shop
     {
-        // variables
-        //X and Y position of the shop
-        public int x;
-        public int y;
-        //Call the seed class
-        Seed seed = new Seed();
+        //Methods
+        //Enter the shop
         public abstract void EnterShop(Player player);
+        //Buy an item from the shop
         public abstract void Buy(Player player,Item item);
+        //Leave the shop
         public abstract void LeaveShop(Player player);
-        //Set the position of the shop
-        public void SetPos(int x, int y)
-        {
-           this.x = x;
-           this.y = y;
-        }
     }
 }
