@@ -146,15 +146,10 @@ namespace FirstPlayable
                         {
                             KillCount++;
                            enemy.enemyAlive = false;
-                            Console.SetCursorPosition(enemy.positionX, enemy.positionY);
-                            Console.BackgroundColor = ConsoleColor.DarkGray;
-                            Console.ForegroundColor = ConsoleColor.Gray;
-                            Console.Write('-');
 
                             enemy.positionX = 0;
                             enemy.positionY = 0;
 
-                            enemy.enemyAlive = false;
                             UpdateLiveLog($"You Killed The {enemy.Name}");
 
                             if (enemy is Runner)

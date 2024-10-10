@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,10 @@ namespace FirstPlayable
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.Write(icon);
                 Console.ResetColor();
+            }
+            else
+            {
+
             }
         }
 
@@ -121,7 +126,7 @@ namespace FirstPlayable
                 positionX = enemyMovementX;
 
                 // Update the enemy's position on the map layout
-                mapLayout[positionY, positionX] = icon;
+                mapLayout[positionY, positionX] = '-';
 
                 // Redraw the new position
                 Console.SetCursorPosition(positionX, positionY);
@@ -130,14 +135,13 @@ namespace FirstPlayable
 
             if (!enemyAlive)
             {
+               
                 // Update the map layout and the console when the enemy dies
-                mapLayout[oldPositionY, oldPositionX] = '-';
+                mapLayout[oldPositionY, oldPositionX] = '#';
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.SetCursorPosition(positionX, positionY);
                 Console.BackgroundColor = ConsoleColor.DarkGray; // Set the background color to dark gray
-                Console.Write(currentTile);
-
-
+                Console.Write(currentTile); 
             }
         }
     }

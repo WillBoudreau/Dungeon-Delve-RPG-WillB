@@ -31,6 +31,14 @@ namespace FirstPlayable
                 Console.Write(icon);
                 Console.ResetColor();
             }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.BackgroundColor = ConsoleColor.DarkGray;
+                Console.SetCursorPosition(positionX, positionY);
+                Console.Write('#');
+                Console.ResetColor();
+            }
         }
 
 
@@ -48,16 +56,12 @@ namespace FirstPlayable
             // checks if enemy is alive so it doesn't bug out when it is actually killed
             if (enemyAlive == true)
             {
-
-                
-
-
                 int rollResult = randomRoll.Next(1, 5);
                 while ((enemyMovementX == playerX && enemyMovementY == playerY) ||
                        (enemyMovementX == newEnemyPositionX && enemyMovementY == newEnemyPositionY) ||
                        mapLayout[enemyMovementY, enemyMovementX] == '#' || mapLayout[enemyMovementY,enemyMovementX] == 'S' 
                        || mapLayout[enemyMovementY, enemyMovementX] == 'P' || 
-                       mapLayout[enemyMovementY, enemyMovementX] == 'U')
+                       mapLayout[enemyMovementY, enemyMovementX] == 'U' || mapLayout[enemyMovementY,enemyMovementX] == '^')
                 {
 
                     // retries the role
@@ -144,7 +148,7 @@ namespace FirstPlayable
                 positionX = enemyMovementX;
 
                 // Update the enemy's position on the map layout
-                mapLayout[positionY, positionX] = icon;
+                //mapLayout[positionY, positionX] = icon;
 
                 // Redraw the new position
                 Console.SetCursorPosition(positionX, positionY);
