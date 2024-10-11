@@ -70,7 +70,7 @@ namespace FirstPlayable
                 }
                 else if(quest is QuestCollectItems collectQuest)
                 {
-                    if(player.currentSeeds >= collectQuest.itemsToCollect)
+                    if(collectQuest.ItemCollected>= collectQuest.itemsToCollect)
                     {
                         questsToComplete.Add(collectQuest);
                     }

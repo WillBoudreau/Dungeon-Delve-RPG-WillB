@@ -55,9 +55,9 @@ namespace FirstPlayable
         void DisplayItems()
         {
             //Display items available in the shop
-            Console.WriteLine("1. Small Potion - 1 gold");
-            Console.WriteLine("2. Medium Potion - 5 gold");
-            Console.WriteLine("3. Large Potion - 10 gold");
+            Console.WriteLine("1. Small Potion - 1 seed");
+            Console.WriteLine("2. Medium Potion - 5 seeds");
+            Console.WriteLine("3. Large Potion - 10 seeds");
         }
         public override void Buy(Player player,Item item)
         {
@@ -72,7 +72,6 @@ namespace FirstPlayable
                         //Buy Small Potion
                         player.currentSeeds -= 1;
                         player.healthSystem.currentHealth += 1;
-                        Console.WriteLine("You have bought a potion for 10 gold");
                         Console.WriteLine("You now have " + player.healthSystem.currentHealth + " health");
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
@@ -89,9 +88,9 @@ namespace FirstPlayable
                 case 2:
                     if (player.currentSeeds >= 5)
                     {
+                        //Buy Medium Potion
                         player.currentSeeds -= 5;
                         player.healthSystem.currentHealth += 5;
-                        Console.WriteLine("You have bought a potion for 20 gold");
                         Console.WriteLine("You now have " + player.healthSystem.currentHealth + " health");
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
@@ -109,7 +108,6 @@ namespace FirstPlayable
                     {
                         player.currentSeeds -= 10;
                         player.healthSystem.currentHealth += 10;
-                        Console.WriteLine("You have bought a potion for 30 gold");
                         Console.WriteLine("You now have " + player.healthSystem.currentHealth+ " health");
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();

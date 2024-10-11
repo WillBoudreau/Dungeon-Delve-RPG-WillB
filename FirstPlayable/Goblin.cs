@@ -61,7 +61,7 @@ namespace FirstPlayable
                        (enemyMovementX == newEnemyPositionX && enemyMovementY == newEnemyPositionY) ||
                        mapLayout[enemyMovementY, enemyMovementX] == '#' || mapLayout[enemyMovementY,enemyMovementX] == 'S' 
                        || mapLayout[enemyMovementY, enemyMovementX] == 'P' || 
-                       mapLayout[enemyMovementY, enemyMovementX] == 'U' || mapLayout[enemyMovementY,enemyMovementX] == '^')
+                       mapLayout[enemyMovementY, enemyMovementX] == 'U' || mapLayout[enemyMovementY,enemyMovementX] == '^' || mapLayout[enemyMovementY,enemyMovementX] == 'G')
                 {
 
                     // retries the role

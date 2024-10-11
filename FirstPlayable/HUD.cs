@@ -106,7 +106,6 @@ namespace FirstPlayable
                 Console.SetCursorPosition(0, questLogStart + i);
                 Console.WriteLine(questProgressMessages[i]);
             }
-            //Console.WriteLine(string.Join("\n", questProgressMessages));
         }
         public void ClearQuestLog(int questLogStart)
         {
