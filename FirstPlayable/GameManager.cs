@@ -26,8 +26,11 @@ namespace FirstPlayable
         private EnemyManager enemyMan;
         private HUD hud;
         public SoundPlayer soundPlayer;
+        string filePath = Path.Combine(Environment.CurrentDirectory, "Settings.json");
         public GameManager()
         {
+            Settings loadedSettings = Settings.LoadSettings(filePath);
+            settings = loadedSettings;
             enemyMan = new EnemyManager();
             map = new Map(enemyMan,player);
             shopManager = new ShopManager(map);

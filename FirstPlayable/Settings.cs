@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Text.Json;
+using System.Diagnostics;
 
 namespace FirstPlayable
 {
     internal class Settings
     {
-       
-      
+        public Settings()
+        {
+            Debug.WriteLine("Grunt Health: " + GoblinInitialHealth);
+        }
+        
         // Player settings
-        public int PlayerInitialHealth { get; set; } = 10;
-        public int PlayerInitialDamage { get; set; } = 10;
-        public int PlayerInitialLevel { get; set; } = 1;
+        public int PlayerInitialHealth { get; set; }
+        public int PlayerInitialDamage { get; set; }
+        public int PlayerInitialLevel { get; set; }
 
         // world Settings
         public string[] RPGMaps { get; set; } = { "RPGMap.txt", "RPGMap2.txt", "RPGMap3.txt", "RPGMap4.txt" };
@@ -29,8 +35,8 @@ namespace FirstPlayable
 
         // Goblin settings
 
-        public int GoblinInitialHealth { get; set; } = 3;
-        public int GoblinInitialDamage { get; set; } = 0;
+        public int GoblinInitialHealth { get; set; }
+        public int GoblinInitialDamage { get; set; }
 
 
 
@@ -42,5 +48,13 @@ namespace FirstPlayable
         // Runner settings
         public int RunnerInitialHealth { get; set; } = 1;
         public int RunnerInitialDamage { get; set; } = 2;
+        public static Settings LoadSettings(string path)
+        {
+            Debug.WriteLine(path);
+            Debug.WriteLine("File found");
+            string json = File.ReadAllText(path);
+            return JsonSerializer.Deserialize<Settings>(json);
+        }
     }
 }
+

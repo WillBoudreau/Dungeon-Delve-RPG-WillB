@@ -1,0 +1,10 @@
+[
+  {
+    "PlayerInitialHealth": 100,
+    "PlayerInitialDamage": 10,
+    "PlayerInitialLevel": 1,
+
+    "GoblinInitialHealth": 100,
+    "GoblinInitialDamage": 10,
+  }
+]
