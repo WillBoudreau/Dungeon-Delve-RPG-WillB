@@ -39,6 +39,10 @@ namespace FirstPlayable
             hud = new HUD(player, map, questManager);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
             soundPlayer.PlayLooping();
+            Debug.WriteLine("Path " + filePath);
+            Debug.WriteLine("Grunt Health: " + settings.GoblinInitialHealth);
+            Debug.WriteLine("Player Health: " + settings.PlayerInitialHealth);
+            Debug.WriteLine("Runner Health: " + settings.RunnerInitialHealth);
         }
         public void Init()
         {

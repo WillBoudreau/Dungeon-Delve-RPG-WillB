@@ -11,32 +11,40 @@ namespace FirstPlayable
 {
     internal class Settings
     {
-        public Settings()
+        public static Settings LoadSettings(string path)
         {
-            Debug.WriteLine("Grunt Health: " + GoblinInitialHealth);
+            //Debug Check
+            if(!File.Exists(path))
+            {
+                Debug.WriteLine("File not found");
+                return new Settings();
+            }
+            else
+            {
+                Debug.WriteLine("File found");
+                string json = File.ReadAllText(path);
+                return JsonSerializer.Deserialize<Settings>(json);
+            }
         }
-        
-        // Player settings
         public int PlayerInitialHealth { get; set; }
         public int PlayerInitialDamage { get; set; }
         public int PlayerInitialLevel { get; set; }
-
+        public int GoblinInitialHealth { get; set; }
+        public int GoblinInitialDamage { get; set; }
         // world Settings
-        public string[] RPGMaps { get; set; } = { "RPGMap.txt", "RPGMap2.txt", "RPGMap3.txt", "RPGMap4.txt" };
-        public string MapFileName { get; set; } = "RPGMap.txt";
-        public string Map2FileName { get; set; } = "RPGMap2.txt";
-        public string Map3FileName { get; set; } = "RPGMap3.txt";
-        public string Map4FileName { get; set; } = "RPGMap4.txt";
+        public string[] RPGMaps { get; set; } = new string[] { "RPGMap.txt", "RPGMap2.txt", "RPGMap3.txt", "RPGMap4.txt" };
+        // Runner settings
+        public int RunnerInitialHealth { get; set; }
+        public int RunnerInitialDamage { get; set; }
+        //public string MapFileName { get; set; }
+        //public string Map2FileName { get; set; }
+        //public string Map3FileName { get; set; }
+        //public string Map4FileName { get; set; }
         public string MusicFileName { get; set; } = "DungeonMap.wav";
 
         public string FileLocation { get; set; } = @"Maps-Music";
         
 
-
-        // Goblin settings
-
-        public int GoblinInitialHealth { get; set; }
-        public int GoblinInitialDamage { get; set; }
 
 
 
@@ -45,16 +53,6 @@ namespace FirstPlayable
         public int BossInitialDamage { get; set; } = 2;
 
 
-        // Runner settings
-        public int RunnerInitialHealth { get; set; } = 1;
-        public int RunnerInitialDamage { get; set; } = 2;
-        public static Settings LoadSettings(string path)
-        {
-            Debug.WriteLine(path);
-            Debug.WriteLine("File found");
-            string json = File.ReadAllText(path);
-            return JsonSerializer.Deserialize<Settings>(json);
-        }
     }
 }
 

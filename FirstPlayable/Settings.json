@@ -1,10 +1,14 @@
-[
-  {
-    "PlayerInitialHealth": 100,
-    "PlayerInitialDamage": 10,
-    "PlayerInitialLevel": 1,
-
-    "GoblinInitialHealth": 100,
-    "GoblinInitialDamage": 10,
-  }
-]
+{
+  //PlayerStats
+  "PlayerInitialHealth": 100,
+  "PlayerInitialDamage": 10,
+  "PlayerInitialLevel": 1,
+  //Grunt Stats
+  "GoblinInitialHealth": 100,
+  "GoblinInitialDamage": 10,
+  //Map paths
+  "RPGMaps": [ "RPGMap.txt", "RPGMap2.txt", "RPGMap3.txt", "RPGMap4.txt" ]
+  //Runner stats
+  "RunnerInitialHealth": 100,
+  "RunnerInitialDamage": 10,
+}
