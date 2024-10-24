@@ -11,6 +11,7 @@ namespace FirstPlayable
 
         public Boss(int maxHealth, int damage, int startX, int startY, string name, char[,] mapLayout) : base(maxHealth, damage, startX, startY, name, mapLayout)
         {
+            settings = new Settings();
             healthSystem = new HealthSystem(maxHealth);
             enemyDamage = damage;
             positionX = startX;

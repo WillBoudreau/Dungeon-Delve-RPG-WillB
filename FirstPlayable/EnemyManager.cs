@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -12,35 +13,36 @@ namespace FirstPlayable
         // variables | encapsulation
         //Class calls
         public Player player;
-        public Settings settings;
+        Settings settings = new Settings();
         public List<Enemy> enemies { get; set; }
 
-        public EnemyManager()
+        public EnemyManager(Settings settings)
         {
-            settings = new Settings();
             enemies = new List<Enemy>();
+            this.settings = settings;
+            Debug.WriteLine("Goblin " + settings.GoblinInitialHealth);
         }
-        public void GenerateEnemies(Map map,List<Enemy>enemies,int numRunners, int numGoblins, int numBoss)
-        {
-            for (int i = 0; i < numRunners; i++)
-            {
-                Runner runner = new Runner(settings.RunnerInitialHealth, settings.RunnerInitialDamage, map.initialPlayerPositionX, map.initialPlayerPositionY, "Runner", map.layout);
-                enemies.Add(runner);
-            }
-            for (int i = 0; i < numGoblins; i++)
-            {
-                Goblin goblin = new Goblin(settings.GoblinInitialHealth, settings.GoblinInitialDamage, map.initialPlayerPositionX, map.initialPlayerPositionY, "Goblin", map.layout);
-                enemies.Add(goblin);
-            }
-            for (int i = 0; i < numBoss; i++)
-            {
-                Boss boss = new Boss(settings.BossInitialHealth, settings.BossInitialDamage, map.initialPlayerPositionX, map.initialPlayerPositionY, "Boss", map.layout);
-                enemies.Add(boss);
-            }
-        }
+        //public void GenerateEnemies(Map map,List<Enemy>enemies,int numRunners, int numGoblins, int numBoss)
+        //{
+        //    for (int i = 0; i < numRunners; i++)
+        //    {
+        //        Runner runner = new Runner(settings.RunnerInitialHealth, settings.RunnerInitialDamage, map.initialPlayerPositionX, map.initialPlayerPositionY, "Runner", map.layout);
+        //        enemies.Add(runner);
+        //    }
+        //    for (int i = 0; i < numGoblins; i++)
+        //    {
+        //        Goblin goblin = new Goblin(settings.GoblinInitialHealth, settings.GoblinInitialDamage, map.initialPlayerPositionX, map.initialPlayerPositionY, "Goblin", map.layout);
+        //        enemies.Add(goblin);
+        //    }
+        //    for (int i = 0; i < numBoss; i++)
+        //    {
+        //        Boss boss = new Boss(settings.BossInitialHealth, settings.BossInitialDamage, map.initialPlayerPositionX, map.initialPlayerPositionY, "Boss", map.layout);
+        //        enemies.Add(boss);
+        //    }
+        //}
         public void Init(Map map)
         {
-            GenerateEnemies(map,enemies,1,1,1);
+            //GenerateEnemies(map,enemies,1,1,1);
         }
         public void Update(Player player,Map map)
         {

@@ -31,8 +31,8 @@ namespace FirstPlayable
         {
             Settings loadedSettings = Settings.LoadSettings(filePath);
             settings = loadedSettings;
-            enemyMan = new EnemyManager();
-            map = new Map(enemyMan,player);
+            enemyMan = new EnemyManager(settings);
+            map = new Map(enemyMan,player,settings);
             shopManager = new ShopManager(map);
             player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, questManager, shopManager);
             questManager = new QuestManager(player, hud);
@@ -43,6 +43,9 @@ namespace FirstPlayable
             Debug.WriteLine("Grunt Health: " + settings.GoblinInitialHealth);
             Debug.WriteLine("Player Health: " + settings.PlayerInitialHealth);
             Debug.WriteLine("Runner Health: " + settings.RunnerInitialHealth);
+            Debug.WriteLine("Grunt Damage: " + settings.GoblinInitialDamage);
+            Debug.WriteLine("Player Damage: " + settings.PlayerInitialDamage);
+            Debug.WriteLine("Runner Damage: " + settings.RunnerInitialDamage);
         }
         public void Init()
         {

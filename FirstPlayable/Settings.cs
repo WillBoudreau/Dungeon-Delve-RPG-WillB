@@ -40,9 +40,9 @@ namespace FirstPlayable
         //public string Map2FileName { get; set; }
         //public string Map3FileName { get; set; }
         //public string Map4FileName { get; set; }
-        public string MusicFileName { get; set; } = "DungeonMap.wav";
+        public string MusicFileName { get; set; }
 
-        public string FileLocation { get; set; } = @"Maps-Music";
+        public string FileLocation { get; set; }
         
 
 

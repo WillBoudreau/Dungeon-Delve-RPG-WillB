@@ -28,10 +28,11 @@ namespace FirstPlayable
  
         private EnemyManager enemyManager;
         private Player player;
-        private Settings settings = new Settings();
-        public Map( EnemyManager enemyManager,Player player)
+        private Settings settings;
+        public Map( EnemyManager enemyManager,Player player,Settings settings)
         {
            this.player = player;
+            this.settings = settings;
             this.enemyManager = enemyManager;
             path = settings.RPGMaps[ChangeMap];
             floor = File.ReadAllLines(path);
