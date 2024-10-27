@@ -10,7 +10,7 @@ namespace FirstPlayable
     internal class Runner : Enemy
     {
 
-        public Runner(int maxHealth, int damage, int startX, int startY, string name, char[,] mapLayout) : base(maxHealth, damage, startX, startY, name, mapLayout)
+        public Runner(int maxHealth, int damage, int startX, int startY, string name, char[,] mapLayout,char icon) : base(maxHealth, damage, startX, startY, name, mapLayout)
         {
             healthSystem = new HealthSystem(maxHealth);
             enemyDamage = damage;
@@ -19,7 +19,8 @@ namespace FirstPlayable
             currentTile = mapLayout[startY, startX];
             enemyAlive = true;
             Name = name;
-            icon = 'R';
+            this.icon = icon;
+            icon = settings.RunnerIcon;
         }
 
         public override void Draw()

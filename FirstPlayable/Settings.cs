@@ -31,27 +31,53 @@ namespace FirstPlayable
         public int PlayerInitialLevel { get; set; }
         public int GoblinInitialHealth { get; set; }
         public int GoblinInitialDamage { get; set; }
+        public char GoblinIcon { get; set; }
         // world Settings
-        public string[] RPGMaps { get; set; } = new string[] { "RPGMap.txt", "RPGMap2.txt", "RPGMap3.txt", "RPGMap4.txt" };
+        public string[] RPGMaps { get; set; } = new string[4];
         // Runner settings
         public int RunnerInitialHealth { get; set; }
         public int RunnerInitialDamage { get; set; }
+        public char RunnerIcon { get; set; }
         //public string MapFileName { get; set; }
         //public string Map2FileName { get; set; }
         //public string Map3FileName { get; set; }
         //public string Map4FileName { get; set; }
         public string MusicFileName { get; set; }
-
         public string FileLocation { get; set; }
-        
-
-
-
-
         // Boss settings
-        public int BossInitialHealth { get; set; } = 28;
-        public int BossInitialDamage { get; set; } = 2;
-
+        public int BossInitialHealth { get; set; }
+        public int BossInitialDamage { get; set; }
+        public string BackgroundColor { get; set; }
+        public string ForegroundColor { get; set; }
+        public enum conColor 
+        {
+            Black, 
+            DarkBlue, 
+            DarkGreen, 
+            DarkCyan, 
+            DarkRed, 
+            DarkMagenta, 
+            DarkYellow, 
+            Gray, 
+            DarkGray, 
+            Blue, 
+            Green, 
+            Cyan, 
+            Red, 
+            Magenta, 
+            Yellow, 
+            White
+        };
+        public void SetColor(string color)
+        {
+           foreach(string colorName in Enum.GetNames(typeof(conColor)))
+            {
+                if(colorName == color)
+                {
+                    Console.BackgroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), color);
+                }
+            }
+        }
 
     }
 }

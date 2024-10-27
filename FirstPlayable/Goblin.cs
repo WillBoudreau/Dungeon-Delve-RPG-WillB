@@ -10,17 +10,20 @@ namespace FirstPlayable
     internal class Goblin : Enemy
     {
 
-        public Goblin(int maxHealth, int damage, int startX, int startY, string name, char[,] mapLayout) : base(maxHealth, damage, startX, startY, name, mapLayout)
+        public Goblin(int maxHealth, int damage, int startX, int startY, string name, char[,] mapLayout,char icon) : base(maxHealth, damage, startX, startY, name, mapLayout)
         {
             
             healthSystem = new HealthSystem(maxHealth);
+            settings = new Settings();
             enemyDamage = damage;
             positionX = startX;
             positionY = startY;
             currentTile = mapLayout[startY, startX];
             enemyAlive = true;
             Name = name;
-            icon = 'G';
+            this.icon = icon;
+            icon = settings.GoblinIcon;
+            Debug.WriteLine("Goblin Icon: " + icon);
         }
 
         public override void Draw()

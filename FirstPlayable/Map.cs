@@ -73,13 +73,13 @@ namespace FirstPlayable
 
                         initialEnemyPositionX = j;
                         initialEnemyPositionY = i;
-                        var enemy = new Goblin(settings.GoblinInitialHealth,settings.GoblinInitialDamage, j, i, "Goblin", layout); 
+                        var enemy = new Goblin(settings.GoblinInitialHealth,settings.GoblinInitialDamage, j, i, "Goblin", layout,settings.GoblinIcon); 
                         enemyManager.enemies.Add(enemy);
                     }
                     else if (layout[i, j] == '_')
                     {
                         layout[i, j] = '-';
-                        var runner = new Runner(settings.RunnerInitialHealth, settings.RunnerInitialDamage, j, i, "Runner", layout); 
+                        var runner = new Runner(settings.RunnerInitialHealth, settings.RunnerInitialDamage, j, i, "Runner", layout, settings.RunnerIcon); 
                         enemyManager.enemies.Add(runner);
                     }
                     else if (layout[i, j] == '@')

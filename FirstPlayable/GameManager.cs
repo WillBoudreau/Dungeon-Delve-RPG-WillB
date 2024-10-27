@@ -46,6 +46,8 @@ namespace FirstPlayable
             Debug.WriteLine("Grunt Damage: " + settings.GoblinInitialDamage);
             Debug.WriteLine("Player Damage: " + settings.PlayerInitialDamage);
             Debug.WriteLine("Runner Damage: " + settings.RunnerInitialDamage);
+            Debug.WriteLine("Goblin Icon: " + settings.GoblinIcon);
+
         }
         public void Init()
         {
