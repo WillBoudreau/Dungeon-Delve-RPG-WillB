@@ -49,6 +49,11 @@ namespace FirstPlayable
         public int BossInitialDamage { get; set; }
         public string BackgroundColor { get; set; }
         public string ForegroundColor { get; set; }
+        public char PotionShopIcon { get; set; }
+        public char SwordShopIcon { get; set; }
+        public char GoblinSpawnPos { get; set; }
+        public char RunnerSpawnPos { get; set; }
+
         public enum conColor 
         {
             Black, 

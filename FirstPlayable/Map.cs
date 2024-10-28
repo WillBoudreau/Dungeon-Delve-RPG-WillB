@@ -67,7 +67,7 @@ namespace FirstPlayable
                         initialPlayerPositionY = i;
                         layout[i, j] = '-';
                     }
-                    else if (layout[i, j] == '*')
+                    else if (layout[i, j] == settings.GoblinSpawnPos)
                     {
                         layout[i, j] = '-';
 
@@ -76,7 +76,7 @@ namespace FirstPlayable
                         var enemy = new Goblin(settings.GoblinInitialHealth,settings.GoblinInitialDamage, j, i, "Goblin", layout,settings.GoblinIcon); 
                         enemyManager.enemies.Add(enemy);
                     }
-                    else if (layout[i, j] == '_')
+                    else if (layout[i, j] == settings.RunnerSpawnPos)
                     {
                         layout[i, j] = '-';
                         var runner = new Runner(settings.RunnerInitialHealth, settings.RunnerInitialDamage, j, i, "Runner", layout, settings.RunnerIcon); 

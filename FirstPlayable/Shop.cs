@@ -8,6 +8,7 @@ namespace FirstPlayable
 {
     internal abstract class Shop
     {
+        Settings settings = new Settings();
         //Methods
         //Enter the shop
         public abstract void EnterShop(Player player);

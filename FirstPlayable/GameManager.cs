@@ -33,8 +33,8 @@ namespace FirstPlayable
             settings = loadedSettings;
             enemyMan = new EnemyManager(settings);
             map = new Map(enemyMan,player,settings);
-            shopManager = new ShopManager(map);
-            player = new Player(settings.PlayerInitialHealth, settings.PlayerInitialDamage, settings.PlayerInitialLevel, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, questManager, shopManager);
+            shopManager = new ShopManager(map,settings);
+            player = new Player(settings.PlayerInitialHealth,settings.PlayerInitialHealth, settings.PlayerInitialDamage, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, questManager, shopManager);
             questManager = new QuestManager(player, hud);
             hud = new HUD(player, map, questManager);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));

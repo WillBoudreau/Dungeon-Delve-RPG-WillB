@@ -11,10 +11,12 @@ namespace FirstPlayable
     internal class ShopManager
     {
         private List<Shop> Shops;
+        private Settings settings;
         Map map;
-        public ShopManager(Map map)
+        public ShopManager(Map map,Settings settings)
         {
             this.map = map;
+            this.settings = settings;
             Shops = new List<Shop>();
             Shops.Add(new PotionShop(map));
             Shops.Add(new SwordShop(map));
@@ -28,11 +30,11 @@ namespace FirstPlayable
             {
                 for (int j = 0; j < map.layout.GetLength(1); j++)
                 {
-                    if (map.layout[i, j] == 'P')
+                    if (map.layout[i, j] == settings.PotionShopIcon)
                     {
                         SpawnShop('P', map,j,i);
                     }
-                    else if (map.layout[i, j] == 'S')
+                    else if (map.layout[i, j] == settings.SwordShopIcon)
                     {
                         SpawnShop('S', map, j, i);
                     }
@@ -46,11 +48,11 @@ namespace FirstPlayable
         public void EnterShop(Player player,string ShopType)
         {
             //Enter the shop
-            if(ShopType == "P")
+            if(ShopType == settings.PotionShopIcon.ToString())
             {
                 Shops[0].EnterShop(player);
             }
-            else if(ShopType == "S")
+            else if(ShopType == settings.SwordShopIcon.ToString())
             {
                 Shops[1].EnterShop(player);
             }
@@ -75,7 +77,7 @@ namespace FirstPlayable
         private bool IsValidTile(char tile)
         {
             //Checks if the tile is a valid shop tile
-            return tile == 'S'|| tile == 'P' || tile =='U';
+            return tile == settings.SwordShopIcon|| tile == 'P' || tile =='U';
         }
 
         private Shop CreateShop(char tile, Map map)
