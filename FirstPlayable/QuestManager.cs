@@ -14,17 +14,19 @@ namespace FirstPlayable
         private List<Quest> completedQuests;
         public int numofKills;
         private int numofItems;
-        public QuestManager(Player player,HUD hud)
+        Settings settings;  
+        public QuestManager(Player player,HUD hud,Settings settings)
         {
             this.player = player;
             this.hud = hud;
             activeQuests = new List<Quest>();
             completedQuests = new List<Quest>();
-            numofKills = 5;
-            numofItems = 15;
+            this.settings = settings;
         }
         public void Init()
         {
+            numofKills = settings.NumOfKills;
+            numofItems = settings.NumOfItems;
             //Initializes the quests
             QuestKillEnemies questKillEnemies = new QuestKillEnemies(numofKills,player);
             QuestCollectItems questCollectItems = new QuestCollectItems(numofItems,player);

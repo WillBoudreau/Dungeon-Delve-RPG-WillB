@@ -61,7 +61,7 @@ namespace FirstPlayable
                         initialPlayerPositionX = j;
                         initialPlayerPositionY = i;
                     }
-                    if (layout[i, j] == '=')
+                    if (layout[i, j] == settings.PlayerSpawnPos)
                     {
                         initialPlayerPositionX = j;
                         initialPlayerPositionY = i;
@@ -73,19 +73,19 @@ namespace FirstPlayable
 
                         initialEnemyPositionX = j;
                         initialEnemyPositionY = i;
-                        var enemy = new Goblin(settings.GoblinInitialHealth,settings.GoblinInitialDamage, j, i, "Goblin", layout,settings.GoblinIcon); 
+                        var enemy = new Goblin(settings.GoblinInitialHealth,settings.GoblinInitialDamage, j, i, settings.GoblinName, layout,settings.GoblinIcon); 
                         enemyManager.enemies.Add(enemy);
                     }
                     else if (layout[i, j] == settings.RunnerSpawnPos)
                     {
                         layout[i, j] = '-';
-                        var runner = new Runner(settings.RunnerInitialHealth, settings.RunnerInitialDamage, j, i, "Runner", layout, settings.RunnerIcon); 
+                        var runner = new Runner(settings.RunnerInitialHealth, settings.RunnerInitialDamage, j, i, settings.RunnerName, layout, settings.RunnerIcon); 
                         enemyManager.enemies.Add(runner);
                     }
-                    else if (layout[i, j] == '@')
+                    else if (layout[i, j] == settings.BossSpawnPos)
                     {
                         layout[i, j] = '-';
-                        var boss = new Boss(settings.BossInitialHealth, settings.BossInitialDamage, j, i, "Boss", layout);
+                        var boss = new Boss(settings.BossInitialHealth, settings.BossInitialDamage, j, i, settings.BossName, layout);
                         enemyManager.enemies.Add(boss);
                     }
                 }

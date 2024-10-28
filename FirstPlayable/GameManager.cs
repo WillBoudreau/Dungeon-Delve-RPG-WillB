@@ -35,7 +35,7 @@ namespace FirstPlayable
             map = new Map(enemyMan,player,settings);
             shopManager = new ShopManager(map,settings);
             player = new Player(settings.PlayerInitialHealth,settings.PlayerInitialHealth, settings.PlayerInitialDamage, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, questManager, shopManager);
-            questManager = new QuestManager(player, hud);
+            questManager = new QuestManager(player, hud,settings);
             hud = new HUD(player, map, questManager);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));
             soundPlayer.PlayLooping();
@@ -90,7 +90,7 @@ namespace FirstPlayable
             
             
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Welcome to Dungeon Delve");
+            Console.WriteLine($"Welcome to {settings.NameOfGame}");
             Console.WriteLine("-------------------------------");
             Console.WriteLine("\nYour goal is to collect 30 seeds '&' around a dungeon map while avoiding or defeating the enemies.");
             Console.WriteLine("\nThe world is known as The Underworld");

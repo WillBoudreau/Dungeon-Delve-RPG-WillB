@@ -26,33 +26,46 @@ namespace FirstPlayable
                 return JsonSerializer.Deserialize<Settings>(json);
             }
         }
+        // Player settings
         public int PlayerInitialHealth { get; set; }
         public int PlayerInitialDamage { get; set; }
         public int PlayerInitialLevel { get; set; }
+        // Goblin settings
         public int GoblinInitialHealth { get; set; }
         public int GoblinInitialDamage { get; set; }
         public char GoblinIcon { get; set; }
+        public string GoblinName { get; set; }
         // world Settings
         public string[] RPGMaps { get; set; } = new string[4];
+        public string NameOfGame { get; set; }
+        public char HealthPotionIcon { get; set; }
+        public char DamagePotionIcon { get; set; }
         // Runner settings
         public int RunnerInitialHealth { get; set; }
         public int RunnerInitialDamage { get; set; }
         public char RunnerIcon { get; set; }
-        //public string MapFileName { get; set; }
-        //public string Map2FileName { get; set; }
-        //public string Map3FileName { get; set; }
-        //public string Map4FileName { get; set; }
+        public string RunnerName { get; set; }
+        // Music settings
         public string MusicFileName { get; set; }
         public string FileLocation { get; set; }
         // Boss settings
         public int BossInitialHealth { get; set; }
         public int BossInitialDamage { get; set; }
+        public string BossName { get; set; }
+        //map settings
         public string BackgroundColor { get; set; }
         public string ForegroundColor { get; set; }
         public char PotionShopIcon { get; set; }
         public char SwordShopIcon { get; set; }
+        //Spawn Settings
         public char GoblinSpawnPos { get; set; }
         public char RunnerSpawnPos { get; set; }
+        public char BossSpawnPos { get; set; }
+        public char PlayerSpawnPos { get; set; }
+        //Quest Settings
+        public int NumOfKills { get; set; }
+        public int NumOfItems { get; set; }
+
 
         public enum conColor 
         {

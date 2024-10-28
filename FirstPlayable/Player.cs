@@ -273,7 +273,7 @@ namespace FirstPlayable
                     
                 }
 
-                if (map.layout[movementY, movementX] == '+')
+                if (map.layout[movementY, movementX] == settings.HealthPotionIcon)
                 {
                     
                     map.layout[movementY, movementX] = '-';
@@ -297,7 +297,7 @@ namespace FirstPlayable
 
                 }
 
-                if (map.layout[movementY, movementX] == '?')
+                if (map.layout[movementY, movementX] == settings.DamagePotionIcon)
                 {
                     
                     map.layout[movementY, movementX] = '-';
