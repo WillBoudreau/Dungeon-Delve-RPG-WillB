@@ -130,7 +130,9 @@
     <None Include="packages.config" />
     <None Include="PlayerStats.json" />
     <None Include="Properties\app.manifest" />
-    <None Include="Settings.json" />
+    <None Include="Settings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DungeonMap.wav">

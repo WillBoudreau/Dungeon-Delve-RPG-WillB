@@ -8,7 +8,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{272C5BD3-93F6-48FC-9B69-326236BEF067}"
 	ProjectSection(SolutionItems) = preProject
 		PlayerStats.json = PlayerStats.json
-		Settings.json = Settings.json
 	EndProjectSection
 EndProject
 Global
