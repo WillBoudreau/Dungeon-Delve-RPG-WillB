@@ -40,6 +40,7 @@ namespace FirstPlayable
         public string NameOfGame { get; set; }
         public char HealthPotionIcon { get; set; }
         public char DamagePotionIcon { get; set; }
+        public char SpikeTrapIcon { get; set; }
         // Runner settings
         public int RunnerInitialHealth { get; set; }
         public int RunnerInitialDamage { get; set; }
@@ -57,6 +58,7 @@ namespace FirstPlayable
         public string ForegroundColor { get; set; }
         public char PotionShopIcon { get; set; }
         public char SwordShopIcon { get; set; }
+        
         //Spawn Settings
         public char GoblinSpawnPos { get; set; }
         public char RunnerSpawnPos { get; set; }

@@ -190,7 +190,7 @@ namespace FirstPlayable
 
                 // Spikes
 
-                if (map.layout[movementY, movementX] == '^')
+                if (map.layout[movementY, movementX] == settings.SpikeTrapIcon)
                 {
                     
                     healthSystem.Damage(1);
