@@ -31,10 +31,11 @@ namespace FirstPlayable
         {
             Settings loadedSettings = Settings.LoadSettings(filePath);
             settings = loadedSettings;
+            Debug.WriteLine("Health name: " + settings.HealthName);
             enemyMan = new EnemyManager(settings);
             map = new Map(enemyMan,player,settings);
             shopManager = new ShopManager(map,settings);
-            player = new Player(settings.PlayerInitialHealth,settings.PlayerInitialHealth, settings.PlayerInitialDamage, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, questManager, shopManager);
+            player = new Player(settings.PlayerInitialHealth,settings.PlayerInitialHealth, settings.PlayerInitialDamage, map.initialPlayerPositionX, map.initialPlayerPositionY, map.layout, questManager, shopManager,settings);
             questManager = new QuestManager(player, hud,settings);
             hud = new HUD(player, map, questManager);
             soundPlayer = new SoundPlayer(GetPath(settings.MusicFileName));

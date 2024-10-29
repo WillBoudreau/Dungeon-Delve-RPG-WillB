@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -33,9 +34,9 @@ namespace FirstPlayable
         public bool levelComplete { get; set; }
 
         private char currentTile;
-        
+
         // Settings
-        public Settings settings = new Settings();
+        public Settings settings;
 
         // Enemy 
         public Enemy currentEnemy { get; set; } = null;
@@ -53,7 +54,7 @@ namespace FirstPlayable
 
         public List<Enemy> enemies;
 
-        public Player(int maxHealth, int health, int damage, int startX, int startY, char[,] mapLayout,QuestManager questManager, ShopManager shopManager)
+        public Player(int maxHealth, int health, int damage, int startX, int startY, char[,] mapLayout,QuestManager questManager, ShopManager shopManager,Settings settings)
         {
             healthSystem = new HealthSystem(maxHealth);
             healthSystem.Heal(health);
@@ -61,10 +62,11 @@ namespace FirstPlayable
             positionX = startX;
             positionY = startY;
             currentTile = mapLayout[startY, startX];
-            itemManager = new ItemManager(this);
+            itemManager = new ItemManager(this,settings);
             this.questManager = questManager;
             liveLog = new List<string>();
             this.shopManager = shopManager;
+            this.settings = settings;
         }
 
 
@@ -255,7 +257,7 @@ namespace FirstPlayable
 
                     map.layout[movementY, movementX] = '-';
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    itemManager.UseItem("Seed");
+                    itemManager.UseItem(settings.SeedName);
 
 
                     
@@ -278,7 +280,7 @@ namespace FirstPlayable
                     
                     map.layout[movementY, movementX] = '-';
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    itemManager.UseItem("HealthPotion");
+                    itemManager.UseItem(settings.HealthName);
                     
                     Console.SetCursorPosition(positionX, positionY);
 
@@ -302,7 +304,7 @@ namespace FirstPlayable
                     
                     map.layout[movementY, movementX] = '-';
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    itemManager.UseItem("DamageBoost");
+                    itemManager.UseItem(settings.DamageName);
                     Console.SetCursorPosition(positionX, positionY);
 
 

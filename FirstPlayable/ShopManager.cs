@@ -18,7 +18,7 @@ namespace FirstPlayable
             this.map = map;
             this.settings = settings;
             Shops = new List<Shop>();
-            Shops.Add(new PotionShop(map));
+            Shops.Add(new PotionShop(map,settings));
             Shops.Add(new SwordShop(map));
             Shops.Add(new BoostShop(map));
         }
@@ -88,7 +88,7 @@ namespace FirstPlayable
                 case 'S':
                     return new SwordShop(map);
                 case 'P':
-                    return new PotionShop(map);
+                    return new PotionShop(map, settings);
                 case 'U':
                     return new BoostShop(map);
                 default:

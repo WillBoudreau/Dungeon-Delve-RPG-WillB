@@ -13,7 +13,8 @@ namespace FirstPlayable
     {
         public static Settings LoadSettings(string path)
         {
-            //Debug Check
+            //Debug Check\
+            Debug.WriteLine("Loading settings");
             if(!File.Exists(path))
             {
                 Debug.WriteLine("File not found");
@@ -41,6 +42,14 @@ namespace FirstPlayable
         public char HealthPotionIcon { get; set; }
         public char DamagePotionIcon { get; set; }
         public char SpikeTrapIcon { get; set; }
+        //Item settings
+        public string HealthName { get; set; }
+        public string DamageName { get; set; }
+        public string SeedName { get; set; }
+        //Potion Shop settings
+        public int MinHealthCost { get; set; }
+        public int MidHealthCost { get; set; }
+        public int MaxHealthCost { get; set; }
         // Runner settings
         public int RunnerInitialHealth { get; set; }
         public int RunnerInitialDamage { get; set; }

@@ -7,16 +7,19 @@ namespace FirstPlayable
     internal class ItemManager
     {
         private Player player;
+        private Settings settings;
         public Dictionary<string, Item> Items { get; set; }
 
-        public ItemManager(Player player)
+        public ItemManager(Player player,Settings Settings)
         {
             this.player = player;
+            this.settings = Settings;
+            Debug.WriteLine("Health name: " + settings.HealthName);
             Items = new Dictionary<string, Item>
         {
-            { "HealthPotion", new HealthPotion() },
-            { "DamageBoost", new DamageBoost() },
-            { "Seed", new Seed() }
+            { settings.HealthName, new HealthPotion() },
+            { settings.DamageName.ToString(), new DamageBoost() },
+            { settings.SeedName.ToString(), new Seed() }
         };
         }
         public void UseItem(string itemName)

@@ -10,9 +10,11 @@ namespace FirstPlayable
     internal class PotionShop : Shop
     {
         Map map;
-        public PotionShop(Map map)
+        Settings settings;
+        public PotionShop(Map map,Settings settings)
         {
             this.map = map;
+            this.settings = settings;
             if(map == null)
             {
                 Debug.WriteLine("Map is null");
@@ -67,7 +69,7 @@ namespace FirstPlayable
             switch (option)
             {
                 case 1:
-                    if (player.currentSeeds >= 1)
+                    if (player.currentSeeds >= settings.MinHealthCost)
                     {
                         //Buy Small Potion
                         player.currentSeeds -= 1;
@@ -86,7 +88,7 @@ namespace FirstPlayable
                     }
                     break;
                 case 2:
-                    if (player.currentSeeds >= 5)
+                    if (player.currentSeeds >= settings.MidHealthCost)
                     {
                         //Buy Medium Potion
                         player.currentSeeds -= 5;
@@ -104,7 +106,7 @@ namespace FirstPlayable
                     }
                     break;
                 case 3:
-                    if (player.currentSeeds >= 10)
+                    if (player.currentSeeds >= settings.MaxHealthCost)
                     {
                         player.currentSeeds -= 10;
                         player.healthSystem.currentHealth += 10;
