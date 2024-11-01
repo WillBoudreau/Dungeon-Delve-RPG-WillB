@@ -9,10 +9,12 @@ namespace FirstPlayable
     internal class BoostShop:Shop
     {
         Map map;
+        Settings settings;
         Seed seed = new Seed();
-        public BoostShop(Map map)
+        public BoostShop(Map map, Settings settings)
         {
             this.map = map;
+            this.settings = settings;
         }
         public override void EnterShop(Player player)
         {
@@ -50,9 +52,9 @@ namespace FirstPlayable
         void DisplayItems()
         {
             //Display items available in the shop
-            Console.WriteLine("1. Health Boost - 5 seeds");
-            Console.WriteLine("2. Attack Boost - 10 seeds");
-            Console.WriteLine("3. Gold Boost - 15 seeds");
+            Console.WriteLine($"1. Health Boost - {settings.MinBonusCost}");
+            Console.WriteLine($"2. Attack Boost - {settings.MidBonusCost}");
+            Console.WriteLine($"3. Gold Boost - {settings.MaxBonusCost}");
         }
         public override void Buy(Player player, Item item)
         {
@@ -62,7 +64,7 @@ namespace FirstPlayable
             switch (option)
             {
                 case 1:
-                    if (player.currentSeeds >= 5)
+                    if (player.currentSeeds >= settings.MinBonusCost)
                     {
                         //Buy Health Boost
                         player.currentSeeds -= 5;
@@ -81,7 +83,7 @@ namespace FirstPlayable
                     }
                     break;
                 case 2:
-                    if (player.currentSeeds >= 10)
+                    if (player.currentSeeds >= settings.MidBonusCost)
                     {
                         player.currentSeeds -= 10;
                         player.playerDamage += 5;
@@ -98,7 +100,7 @@ namespace FirstPlayable
                     }
                     break;
                 case 3:
-                    if (player.currentSeeds >= 15)
+                    if (player.currentSeeds >= settings.MaxBonusCost)
                     {
                         player.currentSeeds -= 15;
                         seed.SeedMultiplier += 2;

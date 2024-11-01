@@ -50,6 +50,14 @@ namespace FirstPlayable
         public int MinHealthCost { get; set; }
         public int MidHealthCost { get; set; }
         public int MaxHealthCost { get; set; }
+        //Sword Shop settings
+        public int MinDamageCost { get; set; }
+        public int MidDamageCost { get; set; }
+        public int MaxDamageCost { get; set; }
+        //Bonus Shop settings
+        public int MinBonusCost { get; set; }
+        public int MidBonusCost { get; set; }
+        public int MaxBonusCost { get; set; }
         // Runner settings
         public int RunnerInitialHealth { get; set; }
         public int RunnerInitialDamage { get; set; }

@@ -10,13 +10,17 @@ namespace FirstPlayable
     internal class SwordShop:Shop
     {
         Map map;
-        public SwordShop(Map map)
+        Settings settings;
+        public SwordShop(Map map, Settings settings)
         {
             this.map = map;
-            if(map == null)
+            this.settings = settings;
+            Debug.WriteLine("MinDamageCost: " + settings.MinDamageCost);
+            if (map == null)
             {
                 Debug.WriteLine("Map is null");
             }
+
         }
         public override void EnterShop(Player player)
         {
@@ -55,9 +59,9 @@ namespace FirstPlayable
         void DisplayItems()
         {
             //Display items available in the shop
-            Console.WriteLine("1. Wooden Sword - 5 seeds");
-            Console.WriteLine("2. Iron Sword - 10 seeds");
-            Console.WriteLine("3. Steel Sword - 15 seeds");
+            Console.WriteLine($"1. Wooden Sword - {settings.MinHealthCost}");
+            Console.WriteLine($"2. Iron Sword - {settings.MidHealthCost}");
+            Console.WriteLine($"3. Steel Sword - {settings.MaxHealthCost}");
         }
         public override void Buy(Player player,Item item)
         {
@@ -67,7 +71,7 @@ namespace FirstPlayable
             switch (option)
             {
                 case 1:
-                    if (player.currentSeeds >= 5)
+                    if (player.currentSeeds >= settings.MinDamageCost)
                     {
                         //Buy Wooden Sword
                         player.currentSeeds -= 5;
@@ -88,7 +92,7 @@ namespace FirstPlayable
                     }
                     break;
                 case 2:
-                    if (player.currentSeeds >= 10)
+                    if (player.currentSeeds >= settings.MidDamageCost)
                     {
                         player.currentSeeds -= 10;
                         player.playerDamage += 10;
@@ -106,7 +110,7 @@ namespace FirstPlayable
                     }
                     break;
                 case 3:
-                    if (player.currentSeeds >= 15)
+                    if (player.currentSeeds >= settings.MaxDamageCost)
                     {
                         player.currentSeeds -= 15;
                         player.playerDamage += 15;

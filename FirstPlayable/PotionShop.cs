@@ -57,9 +57,9 @@ namespace FirstPlayable
         void DisplayItems()
         {
             //Display items available in the shop
-            Console.WriteLine("1. Small Potion - 1 seed");
-            Console.WriteLine("2. Medium Potion - 5 seeds");
-            Console.WriteLine("3. Large Potion - 10 seeds");
+            Console.WriteLine($"1. Small Potion -{settings.MinHealthCost}");
+            Console.WriteLine($"2. Medium Potion - {settings.MidHealthCost}");
+            Console.WriteLine($"3. Large Potion - {settings.MaxHealthCost}");
         }
         public override void Buy(Player player,Item item)
         {

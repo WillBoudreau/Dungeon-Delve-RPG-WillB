@@ -131,7 +131,7 @@
     <None Include="PlayerStats.json" />
     <None Include="Properties\app.manifest" />
     <None Include="Settings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
